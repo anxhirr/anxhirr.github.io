@@ -20,8 +20,8 @@ const AboutSection = () => {
             out will be consistent to a first-class standard.
           </p>
         </div>
-        <div className='img-box'>
-          <img src={aboutimg} alt='my img' className='about__img' />
+        <div className='img-box about__img-box'>
+          <img src={aboutimg} alt='my img' />
         </div>
       </div>
     </section>

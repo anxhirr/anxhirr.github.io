@@ -9,7 +9,6 @@
 
   &__content {
     display: grid;
-
     grid-template-areas:
       'img title'
       'subtitle subtitle';
@@ -28,15 +27,20 @@
   }
 
   &__heading {
-    // padding: 0.5rem 2.5rem 1rem 0.1rem;
     line-height: 2;
     font-weight: var(--fw-reg);
     font-size: var(--fs-h1);
+
+    animation: slide-right 1s;
     &--span {
       font-size: 5rem;
       font-weight: 800;
       letter-spacing: 0.8rem;
     }
+  }
+
+  &__img {
+    animation: slide-left 1s;
   }
 }
 
@@ -45,6 +49,10 @@
   padding-bottom: 20rem;
   background-color: var(--clr-black--2);
   text-align: center;
+
+  @include responsive(600) {
+    padding-bottom: 10rem;
+  }
 
   & h2 {
     color: var(--clr-purple);
@@ -55,12 +63,20 @@
 
   &--box {
     gap: 5rem;
+
+    @include responsive(600) {
+      flex-direction: column;
+    }
   }
 
   &__service {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    @include responsive(600) {
+      max-width: 50rem;
+    }
   }
 
   & p {
@@ -79,6 +95,16 @@
     grid-template-columns: 1fr 30rem;
     column-gap: 5rem;
     height: min-content;
+
+    @include responsive(600) {
+      grid-template-areas:
+        'title '
+        'subtitle '
+        'text'
+        'img';
+
+      grid-template-columns: 1fr;
+    }
 
     & h2 {
       grid-area: title;
@@ -99,6 +125,14 @@
       font-weight: 300;
       margin: 2rem 0;
       padding: 0 3rem;
+    }
+  }
+
+  &__img-box {
+    animation: slide-right 1s;
+    @include responsive(600) {
+      margin: 0 auto;
+      max-width: 40rem;
     }
   }
 }
@@ -124,6 +158,10 @@
 
   &__list {
     gap: 3rem;
+
+    @include responsive(600) {
+      flex-direction: column;
+    }
   }
 
   &__item {

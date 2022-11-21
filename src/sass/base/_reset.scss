@@ -9,6 +9,19 @@
 
 html {
   font-size: 62.5%;
+
+  @include responsive(1200) {
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56%
+  }
+  @include responsive(900) {
+    font-size: 56.25%; // 1rem = 8px, 8/16 = 50%
+  }
+  @include responsive(600) {
+    font-size: 43.75%; // 1rem = 7px, 7/16 = 43%
+  }
+  @include responsive(1800) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75%
+  }
 }
 
 body {
@@ -40,7 +53,6 @@ li {
 }
 
 input,
-button,
 textarea,
 select {
   font: inherit;

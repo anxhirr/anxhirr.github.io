@@ -1,9 +1,7 @@
 .nav {
   padding: 2rem 0;
   font-size: var(--fs-h2);
-
-  &__logo {
-  }
+  z-index: 1;
 
   &__content {
     display: flex;
@@ -13,9 +11,13 @@
 
   &__list {
     gap: 3rem;
-  }
 
-  &__item {
+    @include responsive(600) {
+      flex-direction: column;
+      @include absCenter;
+      opacity: 0;
+      width: 0;
+    }
   }
 
   &__link {
@@ -23,5 +25,38 @@
     &:hover {
       color: var(--clr-red);
     }
+  }
+
+  &__button {
+    display: none;
+    z-index: 999;
+
+    position: fixed;
+    top: 2.5rem;
+    right: 2.5rem;
+
+    &--checked .nav__background {
+      transform: scale(200);
+    }
+
+    @include responsive(600) {
+      display: inline-block;
+    }
+  }
+
+  &__background {
+    position: fixed;
+    top: 3rem;
+    right: 4rem;
+    background-image: linear-gradient(
+      to bottom left,
+      var(--clr-blue),
+      var(--clr-purple)
+    );
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    z-index: -1;
+    transition: all 0.5s;
   }
 }

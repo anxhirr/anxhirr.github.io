@@ -1,0 +1,29 @@
+@mixin responsive($breakpoint) {
+  @if $breakpoint == 600 {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == 900 {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == 1200 {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == 1800 {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
