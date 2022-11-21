@@ -1,0 +1,52 @@
+.todo {
+  background-color: var(--clr-black--2);
+  height: calc(100vh - var(--nav-height));
+
+  &__content {
+    padding: 10rem 0;
+  }
+
+  &__add {
+    gap: 1.5rem;
+  }
+
+  &__input--box {
+    max-width: 50rem;
+    flex-grow: 1;
+  }
+
+  &__input {
+    background-color: var(--clr-black--3);
+    color: var(--clr-white);
+    border: none;
+    width: 100%;
+    padding: 1.5rem 1.5rem;
+    border-radius: 1.5rem;
+
+    &:focus {
+      outline: none;
+      box-shadow: var(--box-shadow);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__list {
+  }
+
+  &__item {
+    max-width: 70rem;
+    margin-inline: auto;
+
+    &--input {
+      // background-color: transparent;
+      // color: var(--clr-white);
+      // border: none;
+    }
+  }
+
+  &__item--btns-box {
+    & button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

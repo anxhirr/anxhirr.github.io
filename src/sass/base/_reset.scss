@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: var(--fs-body);
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--clr-white);
+}
+
+li {
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}

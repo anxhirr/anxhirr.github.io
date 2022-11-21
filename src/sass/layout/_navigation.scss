@@ -1,0 +1,27 @@
+.nav {
+  padding: 2rem 0;
+  font-size: var(--fs-h2);
+
+  &__logo {
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    gap: 3rem;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    transition: all 0.5s;
+    &:hover {
+      color: var(--clr-red);
+    }
+  }
+}
