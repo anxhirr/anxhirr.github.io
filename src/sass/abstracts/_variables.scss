@@ -20,6 +20,12 @@
     var(--clr-purple)
   );
 
+  --linear-hero-black: linear-gradient(
+    to bottom,
+    var(--clr-black--1),
+    var(--clr-black--2)
+  );
+
   --fw-reg: 400;
   --fw-bold: 900;
 

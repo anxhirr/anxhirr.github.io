@@ -9,9 +9,9 @@ const ProjectsSection = () => {
   return (
     <section className='projects'>
       <div className='projects__content container'>
-        <h2 className='projects__title heading--secondary u-margin-b--small'>
-          My Projects
-        </h2>
+        <div className='u-margin-b--small txt-c'>
+          <h2 className='heading--secondary '>My Projects</h2>
+        </div>
         <ul className='projects__list flex-r-center'>
           <li className='projects__item flex-col-center'>
             <span className='project__icon-box'>

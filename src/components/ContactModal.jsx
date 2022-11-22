@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContactModal = () => {
-  return <div>ContactModal</div>;
+  return <div className='contact-modal'>hi</div>;
 };
 
 export default ContactModal;

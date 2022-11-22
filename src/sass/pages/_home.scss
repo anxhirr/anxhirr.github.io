@@ -1,10 +1,7 @@
 .hero {
   padding: 10rem 0;
-  background-color: linear-gradient(
-    to top right,
-    var(--clr-purple),
-    var(--clr-black-2)
-  );
+  background-color: transparent;
+  background-image: var(--linear-hero-black);
 
   &__content {
     display: grid;
@@ -84,7 +81,8 @@
 }
 
 .about {
-  padding: 20rem 0;
+  padding: 15rem 0;
+
   &__content {
     display: grid;
     grid-template-areas:
@@ -144,15 +142,6 @@
     background-color: var(--clr-black--1);
     padding: 10rem 5rem;
     border-radius: 2rem;
-  }
-
-  &__title {
-    text-align: center;
-
-    &:hover {
-      color: var(--clr-red);
-      transform: skewY(2deg) skewX(15deg) scale(1.1);
-    }
   }
 
   &__list {

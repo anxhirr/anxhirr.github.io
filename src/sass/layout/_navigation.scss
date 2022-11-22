@@ -15,6 +15,7 @@
     @include responsive(600) {
       flex-direction: column;
       @include absCenter;
+      position: fixed;
       opacity: 0;
       width: 0;
     }
@@ -62,5 +63,6 @@
     border-radius: 50%;
     z-index: -1;
     transition: all 0.5s;
+    pointer-events: none;
   }
 }

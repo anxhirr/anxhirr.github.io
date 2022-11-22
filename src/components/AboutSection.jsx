@@ -5,7 +5,9 @@ const AboutSection = () => {
   return (
     <section className='about' id='about'>
       <div className='about__content container'>
-        <h2 className='heading--secondary'>Who I am</h2>
+        <div className='u-margin-b--small '>
+          <h2 className='heading--secondary '>Who I am</h2>
+        </div>
         <p className='subheading'>Appasionete Designer & developer</p>
         <div className='about__info'>
           <p>

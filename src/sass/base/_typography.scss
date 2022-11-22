@@ -13,12 +13,14 @@ body {
 }
 
 .heading--secondary {
+  display: inline-block;
   font-size: var(--fs-h2);
   transition: all 0.5s;
   text-align: center;
 
   &:hover {
-    // transform: skewY(2deg) skewX(15deg) scale(1.1);
+    color: var(--clr-red);
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
   }
 }
 
@@ -31,4 +33,8 @@ body {
   font-size: var(--fs-h3);
   background-color: var(--clr-purple);
   padding: 1rem 2rem;
+}
+
+.txt-c {
+  text-align: center;
 }

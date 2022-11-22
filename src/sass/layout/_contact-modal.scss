@@ -1,0 +1,5 @@
+.contact-modal {
+  @include absCenter;
+  position: fixed;
+  z-index: 100;
+}
