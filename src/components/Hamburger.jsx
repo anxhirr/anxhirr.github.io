@@ -2,9 +2,10 @@ import React from 'react';
 
 const Hamburger = ({ active }) => {
   const animation = active ? 'close-anim' : 'open-anim';
+  const color = active ? 'purple' : 'black';
 
   return (
-    <div className='hamburger-box'>
+    <div className={`hamburger-box ${color}`}>
       <svg
         className={`hamburger ${animation}`}
         viewBox='0 0 100 100'

@@ -1,0 +1,26 @@
+.card-game {
+  &__content {
+    padding: 10rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  &__card {
+    background-color: var(--clr-white);
+    cursor: pointer;
+  }
+
+  &__row {
+    padding: 5rem;
+    color: var(--clr-black--2);
+    font-size: 5rem;
+  }
+}

@@ -4,6 +4,11 @@
   border: 0.5rem solid var(--hamburger-color);
   border-radius: 1rem;
   cursor: pointer;
+  background-color: var(--clr-black--1);
+  transition: all 0.5s;
+}
+
+.hamburger-box.purple {
   background-color: var(--clr-purple);
 }
 
@@ -12,27 +17,23 @@
     display: none;
   }
   &__line {
-    // animation: hamburger-open-x 1s forwards;
+    transition: all 0.3s;
 
     &--top {
       --rotation: -45deg;
-      transform-origin: 68px 40px;
+      transform-origin: 68px 40px; // magic numbers lol, play around with them
     }
 
     &--bottom {
       --rotation: 45deg;
-      transform-origin: 70px 60px;
+      transform-origin: 70px 60px; // magic numbers lol, play around with them
     }
   }
 
-  // &:hover &__line {
-  //   animation: hamburger-close-x 1s forwards;
-  // }
-
   .close-anim &__line {
-    animation: hamburger-close-x 1s forwards;
+    animation: hamburger-close-x 0.8s forwards;
   }
   .open-anim &__line {
-    animation: hamburger-open-x 1s forwards;
+    animation: hamburger-open-x 0.8s forwards;
   }
 }

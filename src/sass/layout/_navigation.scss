@@ -20,6 +20,14 @@
     }
   }
 
+  &__list.nav--toggeled {
+    opacity: 1;
+    width: auto;
+    z-index: 2000;
+
+    font-size: 4.4rem;
+  }
+
   &__link {
     transition: all 0.5s;
     &:hover {

@@ -4,6 +4,7 @@ import Hamburger from './Hamburger';
 
 const NavBar = () => {
   const [checked, setChecked] = useState(false);
+  const toggeled = checked ? 'nav--toggeled' : '';
 
   const handleChecked = () => {
     setChecked((prev) => !prev);
@@ -17,7 +18,7 @@ const NavBar = () => {
             Portfolio
           </Link>
         </div>
-        <ul className='nav__list flex-r-center'>
+        <ul className={`nav__list flex-r-center ${toggeled}`}>
           <li className='nav__item'>
             <Link className='nav__link'>About</Link>
           </li>

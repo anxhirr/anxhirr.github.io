@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiFillBank } from 'react-icons/ai';
 import { FcTodoList } from 'react-icons/fc';
 import { TiWeatherStormy } from 'react-icons/ti';
+import { BiMemoryCard } from 'react-icons/bi';
 
 const ProjectsSection = () => {
   return (
@@ -51,6 +52,20 @@ const ProjectsSection = () => {
               as possible
             </p>
             <Link href='' className='btn btn--purple'>
+              Learn more
+            </Link>
+          </li>
+          <li className='projects__item flex-col-center'>
+            <span className='project__icon-box'>
+              <BiMemoryCard />
+            </span>
+            <h5 className='project__title'>Card Memory</h5>
+            <p>
+              Every website should be built with 2 primary goals: Firstly, it
+              needs to work across all devices. Secondly, it needs to be as fast
+              as possible
+            </p>
+            <Link to='/card-memory-game' className='btn btn--purple'>
               Learn more
             </Link>
           </li>

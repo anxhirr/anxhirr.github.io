@@ -1,6 +1,5 @@
 .hero {
-  height: calc(100vh - var(--nav-height));
-  padding-top: 10rem;
+  padding: 10rem 0;
   background-color: linear-gradient(
     to top right,
     var(--clr-purple),

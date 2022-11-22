@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ToDoPage from './pages/ToDoPage';
+import CardMemoryGamePage from './pages/CardMemoryGamePage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/to-do' element={<ToDoPage />} />
+        <Route path='/card-memory-game' element={<CardMemoryGamePage />} />
       </Routes>
       <Footer />
     </>
