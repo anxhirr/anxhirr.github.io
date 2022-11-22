@@ -56,11 +56,7 @@
     position: fixed;
     top: 3rem;
     right: 4rem;
-    background-image: linear-gradient(
-      to bottom left,
-      var(--clr-blue),
-      var(--clr-purple)
-    );
+    background-image: var(--linear-blue-purple);
     height: 3rem;
     width: 3rem;
     border-radius: 50%;

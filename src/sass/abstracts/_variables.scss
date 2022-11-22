@@ -14,6 +14,12 @@
   --clr-white: hsl(0, 0%, 100%);
   --clr-blue: hsl(229, 76%, 66%);
 
+  --linear-blue-purple: linear-gradient(
+    to bottom left,
+    var(--clr-blue),
+    var(--clr-purple)
+  );
+
   --fw-reg: 400;
   --fw-bold: 900;
 
