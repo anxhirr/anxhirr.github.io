@@ -1,10 +1,10 @@
 // import { configureStore } from '@reduxjs/toolkit';
 
-// import contactModalSlice from './contact-modal-slice';
+// import overlaySlice from './overlay-slice';
 
 // const store = configureStore({
 //   reducer: {
-//     contactModal: contactModalSlice.reducer,
+//     overlay: overlaySlice.reducer,
 //   },
 // });
 

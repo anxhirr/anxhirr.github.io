@@ -3,6 +3,7 @@ import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
 import WordList from './WordList.json';
+import WinLosePopUp from './WinLosePopUp';
 
 const getNewWord = () => {
   return WordList[Math.floor(Math.random() * WordList.length)];
@@ -16,10 +17,20 @@ const Hangman = () => {
     (letter) => !toGuessWord.includes(letter)
   );
 
-  // const disabledKeyboardBtn =
-
   const hasLost = incorrectLetters.length >= 6;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
+
+  console.log(toGuessWord.length);
+
+  // useEffect(() => {
+  //   if (toGuessWord.length >= 6) {
+  //     setGuessedLetters((prev) => [
+  //       ...prev,
+  //       toGuessWord[Math.floor(Math.random() * toGuessWord.length)],
+  //     ]);
+  //   }
+  // }, []);
+  // console.log(guessedLetters);
 
   const startNewGame = () => {
     setToGuessWord(getNewWord());
@@ -37,7 +48,7 @@ const Hangman = () => {
   useEffect(() => {
     const handleKeyPress = (e) => {
       const pressedKey = e.key;
-      if (!pressedKey.match(/^[a-z]$/)) return;
+      if (!pressedKey.match(/^[a-zA-Z]$/)) return;
 
       addGuessedLetter(pressedKey);
     };
@@ -64,13 +75,15 @@ const Hangman = () => {
     };
   }, [addGuessedLetter]);
 
+  const shouldPopUp = hasWon || hasLost;
+
   return (
     <section className='hangman'>
       <div className='hangman__content container'>
+        {/* {shouldPopUp && <WinLosePopUp hasLost={hasLost} hasWon={hasWon} />} */}
         <HangmanBody
-          hasLost={hasLost}
-          hasWon={hasWon}
           incorrectLetters={incorrectLetters}
+          startNewGame={startNewGame}
         />
         <HangmanWord
           hasLost={hasLost}

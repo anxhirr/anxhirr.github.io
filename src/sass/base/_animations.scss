@@ -55,3 +55,48 @@
     stroke-dashoffset: 0;
   }
 }
+
+@keyframes keyboard-zoom-in {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.08;
+    background: var(--clr-blue--2);
+  }
+}
+
+@keyframes keyboard-zoom-out {
+  0% {
+    scale: 1.08;
+    background: var(--clr-blue--2);
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes keyboard-pulse {
+  0% {
+    scale: 1;
+  }
+
+  25% {
+    scale: 1.08;
+  }
+
+  50% {
+    scale: 1.05;
+    background: var(--clr-red--weak);
+    color: var(--clr-white);
+  }
+
+  90% {
+    scale: 1.08;
+  }
+
+  100% {
+    scale: 1;
+  }
+}

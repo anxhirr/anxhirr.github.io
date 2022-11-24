@@ -9,11 +9,9 @@ const BODY__PARTS = [
   <div className='hangman__drawing--right-leg' key={6} />,
 ];
 
-const HangmanBody = ({ incorrectLetters, hasLost, hasWon }) => {
+const HangmanBody = ({ incorrectLetters }) => {
   return (
     <>
-      {hasWon ? 'Congratulations you just won' : ''}
-      {hasLost ? 'Failed, maybe try your luck again?' : ''}
       <div className='hangman__drawing'>
         <div className='hangman__drawing--down' />
         <div className='hangman__drawing--right' />

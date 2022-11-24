@@ -45,16 +45,23 @@ const HangmanKeyboard = ({
           <button
             onClick={() => addGuessedLetter(key)}
             key={key}
-            className={`hangman__key ${isWrong ? 'hangman__key--wrong' : ''} ${
-              isCorrect ? 'hangman__key--correct' : ''
-            }`}
+            className={`hangman__key ${isWrong ? 'hangman__key--wrong ' : ''} ${
+              disabled ? 'hangman__key--no-hover' : ''
+            } ${isCorrect ? 'hangman__key--correct' : ''} 
+            
+            `}
             disabled={disabled || isWrong}
           >
             {key}
           </button>
         );
       })}
-      <button onClick={() => startNewGame()} className='btn--new-game'>
+      <button
+        onClick={() => startNewGame()}
+        className={`hangman__key hangman__key--new-game ${
+          disabled ? 'hangman__key--new-game--pulse' : ''
+        }`}
+      >
         New Game
       </button>
     </div>
