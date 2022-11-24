@@ -10,7 +10,7 @@ const INITIAL__CARDS = [
   { number: 6, show: false },
 ];
 
-const CardMemory = () => {
+const Memory = () => {
   const [cards, setCards] = useState([]);
   const [choice1, setChoice1] = useState(null);
   const [choice2, setChoice2] = useState(null);
@@ -116,4 +116,4 @@ const CardMemory = () => {
   );
 };
 
-export default CardMemory;
+export default Memory;

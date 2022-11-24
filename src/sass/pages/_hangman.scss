@@ -1,0 +1,151 @@
+.hangman {
+  padding: 10rem 0;
+  color: var(--clr-black--1);
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    background-color: #fff;
+    padding: 5rem 0;
+  }
+
+  &__drawing {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--ground {
+      width: 20rem;
+      height: 1rem;
+      background: var(--clr-black--1);
+    }
+    &--stand {
+      height: 20rem;
+      width: 1rem;
+      background: var(--clr-black--1);
+    }
+    &--right {
+      width: 15rem;
+      height: 1rem;
+      margin-left: 14rem;
+      background: var(--clr-black--1);
+    }
+    &--down {
+      position: absolute;
+      height: 3rem;
+      width: 1rem;
+      top: 0;
+      right: 0;
+      background: var(--clr-black--1);
+    }
+    &--head {
+      position: absolute;
+      height: 4rem;
+      width: 4rem;
+      border: 1rem solid var(--clr-black--1);
+      border-radius: 100%;
+      top: 2rem;
+      right: -1.5rem;
+    }
+    &--body {
+      position: absolute;
+      height: 8rem;
+      width: 1rem;
+      top: 5rem;
+      right: 0;
+      background: var(--clr-black--1);
+    }
+    &--left-arm {
+      position: absolute;
+      height: 1rem;
+      width: 6rem;
+      top: 9rem;
+      right: 1rem;
+      transform-origin: bottom right;
+      rotate: 45deg;
+      background: var(--clr-black--1);
+    }
+    &--right-arm {
+      position: absolute;
+      height: 1rem;
+      width: 6rem;
+      top: 9rem;
+      right: -6rem;
+      transform-origin: bottom left;
+      rotate: -45deg;
+      background: var(--clr-black--1);
+    }
+    &--left-leg {
+      position: absolute;
+      height: 1rem;
+      width: 6rem;
+      top: 12rem;
+      right: 0;
+      transform-origin: bottom right;
+      rotate: -60deg;
+      background: var(--clr-black--1);
+    }
+    &--right-leg {
+      position: absolute;
+      height: 1rem;
+      width: 6rem;
+      top: 12rem;
+      right: -5rem;
+      transform-origin: bottom left;
+      rotate: 60deg;
+      background: var(--clr-black--1);
+    }
+  }
+
+  &__word {
+    font-size: 6rem;
+    display: flex;
+    gap: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__letter {
+    &--border {
+      padding: 0 1rem;
+      border-bottom: 1rem solid var(--clr-black--1);
+    }
+    &--visible {
+      visibility: visible;
+    }
+    &--hidden {
+      visibility: hidden;
+    }
+
+    &--winner {
+      color: var(--clr-green);
+    }
+  }
+
+  &__keyboard {
+    align-self: stretch;
+    margin: 0 auto;
+    max-width: 80rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    gap: 0.5rem;
+  }
+
+  &__key {
+    text-transform: uppercase;
+    padding: 2rem 3rem;
+    border: 2px solid var(--clr-black--1);
+
+    &:hover:not(&--wrong, &--correct) {
+      background: var(--clr-blue--2);
+    }
+
+    &--wrong {
+      background: var(--clr-blue--1);
+    }
+    &--correct {
+      background: var(--clr-green);
+    }
+  }
+}

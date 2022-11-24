@@ -45,13 +45,13 @@ const ProjectsSection = () => {
             <span className='project__icon-box'>
               <TiWeatherStormy />
             </span>
-            <h5 className='project__title'>GetWeather</h5>
+            <h5 className='project__title'>Hangman</h5>
             <p>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast
               as possible
             </p>
-            <Link href='' className='btn btn--purple'>
+            <Link to='hangman-game' className='btn btn--purple'>
               Learn more
             </Link>
           </li>
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
             <span className='project__icon-box'>
               <BiMemoryCard />
             </span>
-            <h5 className='project__title'>Card Memory</h5>
+            <h5 className='project__title'>Memory Game</h5>
             <p>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast

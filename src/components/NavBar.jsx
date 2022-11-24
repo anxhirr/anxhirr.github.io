@@ -6,7 +6,7 @@ import ContactModal from './ContactModal';
 const NavBar = () => {
   const [checked, setChecked] = useState(false);
   const toggeled = checked ? 'nav--toggeled' : '';
-  const [contact, setContact] = useState(true);
+  const [contact, setContact] = useState(false);
 
   const handleChecked = () => {
     setChecked((prev) => !prev);

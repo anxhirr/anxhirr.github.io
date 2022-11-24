@@ -147,7 +147,14 @@
   &__list {
     gap: 3rem;
 
+    @include responsive(1200) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+    }
+
     @include responsive(600) {
+      display: flex;
       flex-direction: column;
     }
   }

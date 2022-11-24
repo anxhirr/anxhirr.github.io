@@ -25,4 +25,8 @@
     color: var(--clr-white);
     max-width: 20rem;
   }
+
+  &--new-game {
+    border: 2px solid var(--clr-black--1);
+  }
 }

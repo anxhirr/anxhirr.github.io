@@ -1,5 +1,4 @@
 .nav {
-  padding: 2rem 0;
   font-size: var(--fs-h2);
   z-index: 1;
 
@@ -7,6 +6,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem 0;
+    background-image: var(--linear-hero);
   }
 
   &__list {
@@ -49,14 +50,14 @@
     }
 
     @include responsive(600) {
-      display: inline-block;
+      display: block;
     }
   }
 
   &__background {
     position: fixed;
-    top: 3rem;
-    right: 4rem;
+    top: 3.3rem;
+    right: 3.3rem;
     background-image: var(--linear-blue-purple);
     height: 3rem;
     width: 3rem;
