@@ -158,6 +158,11 @@
     background-color: var(--clr-black--1);
     padding: 10rem 5rem;
     border-radius: 2rem;
+
+    @include responsive(400) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   &__list {

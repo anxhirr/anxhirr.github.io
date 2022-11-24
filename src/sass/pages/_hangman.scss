@@ -8,6 +8,10 @@
     gap: 3rem;
     background-color: #fff;
     padding: 5rem 0;
+
+    @include responsive(400) {
+      width: 100%;
+    }
   }
 
   &__drawing {
@@ -104,22 +108,34 @@
   }
 
   &__word {
-    font-size: 6rem;
-    display: flex;
+    font-size: 5rem;
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
     gap: 2rem;
     text-transform: uppercase;
   }
 
   &__letter {
     &--border {
+      flex: 1;
       padding: 0 1rem;
       border-bottom: 1rem solid var(--clr-black--1);
+      @include responsive(600) {
+        padding: 0;
+      }
     }
     &--visible {
       visibility: visible;
     }
     &--hidden {
       visibility: hidden;
+    }
+    &--red {
+      color: var(--clr-red--strong);
+    }
+    &--black {
+      color: var(--clr-black--1);
     }
 
     &--winner {
@@ -131,8 +147,7 @@
     align-self: stretch;
     margin: 0 auto;
     max-width: 80rem;
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
