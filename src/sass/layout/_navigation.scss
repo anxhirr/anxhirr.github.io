@@ -15,26 +15,38 @@
 
     @include responsive(600) {
       flex-direction: column;
-      @include absCenter;
+
       position: fixed;
-      opacity: 0;
-      width: 0;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
     }
-  }
-
-  &__list.nav--toggeled {
-    opacity: 1;
-    width: auto;
-    z-index: 2000;
-
-    font-size: 4.4rem;
   }
 
   &__link {
+    display: inline-block;
     transition: all 0.5s;
+
+    @include responsive(600) {
+      opacity: 0;
+      width: 0;
+      pointer-events: none;
+    }
+
     &:hover {
       color: var(--clr-red);
     }
+  }
+
+  &--toggeled &__link {
+    opacity: 1;
+    width: auto;
+
+    font-size: 4.4rem;
+  }
+  &--toggeled &__list {
+    z-index: 2000;
+    left: 50%;
   }
 
   &__button {
@@ -58,7 +70,7 @@
     position: fixed;
     top: 3.3rem;
     right: 3.3rem;
-    background-image: var(--linear-blue-purple);
+    background-color: var(--clr-blue--2);
     height: 3rem;
     width: 3rem;
     border-radius: 50%;

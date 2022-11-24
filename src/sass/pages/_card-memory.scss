@@ -3,7 +3,7 @@
   background-image: var(--linear-blue-purple);
 
   &__content {
-    width: fit-content;
+    max-width: 60rem;
     margin-inline: auto;
   }
 
@@ -12,8 +12,10 @@
   }
 
   &__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 3rem;
   }
 

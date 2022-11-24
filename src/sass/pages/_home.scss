@@ -13,12 +13,23 @@
     align-content: center;
     justify-content: center;
 
+    @include responsive(600) {
+      grid-template-areas: 'title' 'img' 'subtitle';
+    }
+
     & p {
       text-align: right;
       transform: translateY(-4rem);
       width: calc(100% + 3rem);
       position: relative;
       left: -2.5rem;
+
+      @include responsive(600) {
+        left: 0;
+        width: auto;
+        text-align: center;
+        transform: translateY(0);
+      }
     }
   }
 
@@ -28,6 +39,7 @@
     font-size: var(--fs-h1);
 
     animation: slide-right 1s;
+
     &--span {
       font-size: 5rem;
       font-weight: 800;
@@ -111,6 +123,10 @@
     & p {
       grid-column: 1/ -1;
       width: calc(100% + 2rem);
+
+      @include responsive(600) {
+        width: auto;
+      }
     }
   }
 

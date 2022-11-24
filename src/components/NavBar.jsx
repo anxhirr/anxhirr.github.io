@@ -19,14 +19,14 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className='nav'>
+      <nav className={`nav ${toggeled}`}>
         <div className='nav__content container'>
           <div className='nav__logo'>
             <Link to='/' className=''>
               Portfolio
             </Link>
           </div>
-          <ul className={`nav__list flex-r-center ${toggeled}`}>
+          <ul className='nav__list flex-r-center'>
             <li className='nav__item'>
               <Link className='nav__link'>About</Link>
             </li>
@@ -39,13 +39,13 @@ const NavBar = () => {
               </Link>
             </li>
           </ul>
-          <div
+          <button
             className={`nav__button ${checked ? 'nav__button--checked' : ''} `}
             onClick={handleChecked}
           >
             <Hamburger active={checked} />
             <span className='nav__background' />
-          </div>
+          </button>
         </div>
       </nav>
       {contact && <ContactModal setContact={setContact} />}

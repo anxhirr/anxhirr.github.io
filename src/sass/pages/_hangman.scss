@@ -16,6 +16,10 @@
     flex-direction: column;
     align-items: center;
 
+    @include responsive(400) {
+      transform: translateX(-5rem);
+    }
+
     &--ground {
       width: 20rem;
       height: 1rem;
@@ -127,14 +131,17 @@
     align-self: stretch;
     margin: 0 auto;
     max-width: 80rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
   &__key {
     text-transform: uppercase;
     padding: 2rem 3rem;
+    aspect-ratio: 2/1;
     border: 2px solid var(--clr-black--1);
 
     &:hover:not(&--wrong, &--correct) {

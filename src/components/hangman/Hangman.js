@@ -23,6 +23,7 @@ const Hangman = () => {
 
   const startNewGame = () => {
     setToGuessWord(getNewWord());
+    setGuessedLetters([]);
   };
 
   const addGuessedLetter = useCallback(
