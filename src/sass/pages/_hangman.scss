@@ -21,10 +21,31 @@
     flex-wrap: wrap;
 
     &--score {
+      &--pulse {
+      }
     }
     &--higest-score {
     }
     &--lifes {
+    }
+  }
+
+  &__hint {
+    padding: 0 0.3rem;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    border-radius: 0.3rem;
+
+    &--pulse {
+      animation: keyboard-pulse 0.5s infinite;
+    }
+
+    &--hidden {
+      opacity: 0;
+    }
+    &--visible {
+      opacity: 1;
     }
   }
 
@@ -209,6 +230,10 @@
     &--correct {
       background: var(--clr-green);
       color: var(--clr-white);
+    }
+
+    &--hint {
+      animation: keyboard-pulse 0.5s infinite;
     }
 
     &--new-game {

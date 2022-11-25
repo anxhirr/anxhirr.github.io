@@ -36,25 +36,29 @@ const HangmanKeyboard = (props) => {
     startNewGame,
     inactiveLetters,
     correctLetters,
+    keyHint,
   } = props;
-
-  console.log(disabled);
 
   return (
     <div className='hangman__keyboard'>
       {KEYS.map((key) => {
         const isWrong = inactiveLetters.includes(key);
         const isCorrect = correctLetters.includes(key);
+        const isDisabled = disabled || isWrong || isCorrect;
+        let shouldShowHint = keyHint === key;
+        if (isCorrect) shouldShowHint = false;
+
         return (
           <button
             onClick={() => addGuessedLetter(key)}
             key={key}
-            className={`hangman__key ${isWrong ? 'hangman__key--wrong ' : ''} ${
-              disabled ? 'hangman__key--no-hover' : ''
-            } ${isCorrect ? 'hangman__key--correct' : ''} 
-            
+            className={`hangman__key 
+            ${isWrong ? 'hangman__key--wrong ' : ''} 
+            ${disabled ? 'hangman__key--no-hover' : ''} 
+            ${isCorrect ? 'hangman__key--correct' : ''} 
+            ${shouldShowHint ? 'hangman__key--hint' : ''} 
             `}
-            disabled={disabled || isWrong}
+            disabled={isDisabled}
           >
             {key}
           </button>

@@ -22,6 +22,14 @@ const Hangman = () => {
 
   const [remainingTime, setRemainingTime] = useState(TIME__LIMIT);
 
+  const [keyHint, setKeyHint] = useState(null);
+
+  const incorrectLetters = guessedLetters.filter(
+    (letter) => !toGuessWord.includes(letter)
+  );
+  const hasLost = incorrectLetters.length >= 6;
+  const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
+
   const updateRemainingTime = () => {
     setRemainingTime((remainingTime) => remainingTime - 1);
   };
@@ -31,24 +39,17 @@ const Hangman = () => {
       .split('')
       .filter((letter) => !guessedLetters.includes(letter));
 
-    console.log(unFoundLetters);
-    setGuessedLetters((prev) => [
-      ...prev,
-      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)],
-    ]);
-  }, [toGuessWord, guessedLetters]);
+    const hintKey =
+      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)];
 
-  const incorrectLetters = guessedLetters.filter(
-    (letter) => !toGuessWord.includes(letter)
-  );
-
-  const hasLost = incorrectLetters.length >= 6;
-  const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
+    setKeyHint(hintKey);
+  }, [guessedLetters, toGuessWord]);
 
   const startNewGame = useCallback(() => {
     setToGuessWord(getNewWord());
     setGuessedLetters([]);
     setRemainingTime(TIME__LIMIT);
+    setKeyHint(null);
 
     if (hasWon) {
       setStreakWins((prev) => prev + 1);
@@ -126,12 +127,12 @@ const Hangman = () => {
           score={streakWins}
           highestScore={highestScore}
           triesLeft={loses}
-          remainingTime={remainingTime}
         />
         <HangmanBody
           hasLost={hasLost}
           incorrectLetters={incorrectLetters}
           startNewGame={startNewGame}
+          remainingTime={remainingTime}
         />
         <HangmanWord
           hasLost={hasLost}
@@ -145,6 +146,7 @@ const Hangman = () => {
           addGuessedLetter={addGuessedLetter}
           inactiveLetters={incorrectLetters}
           correctLetters={guessedLetters.filter((l) => toGuessWord.includes(l))}
+          keyHint={keyHint}
         />
       </div>
     </section>
