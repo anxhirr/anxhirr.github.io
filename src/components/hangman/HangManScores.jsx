@@ -1,7 +1,12 @@
 import React from 'react';
 
 const HangManScores = (props) => {
-  const { score, triesLeft, highestScore } = props;
+  const { remainingTime, score, highestScore, triesLeft, hasLost } = props;
+
+  let shouldPulse = remainingTime <= 3;
+  const shouldHideHint = remainingTime === 0;
+  if (remainingTime === 0) shouldPulse = false;
+  if (hasLost) shouldPulse = false;
 
   const lifes = 4 - triesLeft;
 
@@ -18,6 +23,19 @@ const HangManScores = (props) => {
       <div className='hangman__scores--lifes'>
         <span>Lifes Left: </span>
         <span>{lifes}</span>
+      </div>
+
+      <div
+        className={`hangman__scores-hint ${
+          shouldPulse ? 'hangman__scores-hint--pulse' : ''
+        } ${
+          shouldHideHint || hasLost
+            ? 'hangman__scores-hint--hidden'
+            : 'hangman__scores-hint--visible'
+        }`}
+      >
+        <span>Hint after:</span>
+        <span>{remainingTime}</span>
       </div>
     </div>
   );

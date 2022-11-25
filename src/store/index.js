@@ -1,11 +1,7 @@
-// import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-// import overlaySlice from './overlay-slice';
+const store = configureStore({
+  reducer: {},
+});
 
-// const store = configureStore({
-//   reducer: {
-//     overlay: overlaySlice.reducer,
-//   },
-// });
-
-// export default store;
+export default store;

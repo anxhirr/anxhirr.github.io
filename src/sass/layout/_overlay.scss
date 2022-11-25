@@ -16,4 +16,11 @@
     border-radius: 0.5rem;
     z-index: 1000;
   }
+
+  &.hidden {
+    display: none;
+  }
+  &.active {
+    display: block;
+  }
 }

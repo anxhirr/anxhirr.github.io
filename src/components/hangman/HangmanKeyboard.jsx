@@ -32,12 +32,15 @@ const KEYS = [
 const HangmanKeyboard = (props) => {
   const {
     addGuessedLetter,
-    disabled,
+    hasLost,
+    hasWon,
     startNewGame,
     inactiveLetters,
     correctLetters,
     keyHint,
   } = props;
+
+  const disabled = hasLost || hasWon;
 
   return (
     <div className='hangman__keyboard'>
@@ -56,7 +59,7 @@ const HangmanKeyboard = (props) => {
             ${isWrong ? 'hangman__key--wrong ' : ''} 
             ${disabled ? 'hangman__key--no-hover' : ''} 
             ${isCorrect ? 'hangman__key--correct' : ''} 
-            ${shouldShowHint ? 'hangman__key--hint' : ''} 
+            ${shouldShowHint && !hasLost ? 'hangman__key--hint' : ''} 
             `}
             disabled={isDisabled}
           >

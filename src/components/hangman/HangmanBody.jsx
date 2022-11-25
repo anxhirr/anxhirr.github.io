@@ -9,11 +9,7 @@ const BODY__PARTS = [
   <div className='hangman__drawing--right-leg' key={6} />,
 ];
 
-const HangmanBody = ({ incorrectLetters, hasLost, remainingTime }) => {
-  let shouldPulse = remainingTime <= 3;
-  const shouldHideHint = remainingTime === 0;
-  if (remainingTime === 0) shouldPulse = false;
-
+const HangmanBody = ({ incorrectLetters, hasLost }) => {
   return (
     <>
       <div
@@ -21,18 +17,6 @@ const HangmanBody = ({ incorrectLetters, hasLost, remainingTime }) => {
           hasLost ? 'hangman__drawing--shake' : ''
         }`}
       >
-        <div
-          className={`hangman__hint ${
-            shouldPulse ? 'hangman__hint--pulse' : ''
-          } ${
-            shouldHideHint ? 'hangman__hint--hidden' : 'hangman__hint--visible'
-          }
-          
-          `}
-        >
-          <span>Hint after:</span>
-          <span>{remainingTime}</span>
-        </div>
         <div className='hangman__drawing--down' />
         <div className={`hangman__drawing--right `} />
         <div className={`hangman__drawing--stand `} />

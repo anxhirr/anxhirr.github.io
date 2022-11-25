@@ -28,26 +28,29 @@
     }
     &--lifes {
     }
-  }
 
-  &__hint {
-    padding: 0 0.3rem;
-    position: absolute;
-    top: 3rem;
-    left: 4rem;
-    border-radius: 0.3rem;
+    &-hint {
+      padding: 0 0.3rem;
+      border-radius: 0.3rem;
 
-    &--pulse {
-      animation: keyboard-pulse 0.5s infinite;
-    }
-
-    &--hidden {
-      opacity: 0;
-    }
-    &--visible {
-      opacity: 1;
+      &--pulse {
+        animation: keyboard-pulse 0.5s infinite;
+      }
+      &--hidden {
+        display: none;
+      }
+      &--visible {
+        display: inline-block;
+      }
     }
   }
+
+  // &__hint {
+  //   // position: absolute;
+  //   // top: 3rem;
+  //   // left: 4rem;
+
+  // }
 
   &__drawing {
     position: relative;

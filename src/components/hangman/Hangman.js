@@ -3,14 +3,13 @@ import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
 import WordList from './WordList.json';
-// import WinLosePopUp from './WinLosePopUp';
 import HangManScores from './HangManScores';
 
 const getNewWord = () => {
   return WordList[Math.floor(Math.random() * WordList.length)];
 };
 
-const TIME__LIMIT = 10;
+const TIME__LIMIT = 15;
 
 const Hangman = () => {
   const [toGuessWord, setToGuessWord] = useState(getNewWord());
@@ -60,8 +59,7 @@ const Hangman = () => {
     if (loses >= 3) {
       setLoses(0);
       setStreakWins(0);
-
-      if (streakWins > highestScore) setHighestScore(streakWins);
+      if (streakWins >= highestScore) setHighestScore(streakWins);
     }
   }, [hasLost, hasWon, highestScore, loses, streakWins]);
 
@@ -104,6 +102,8 @@ const Hangman = () => {
   }, [startNewGame]);
 
   useEffect(() => {
+    if (hasLost) return;
+
     if (remainingTime === 0) {
       return handleTimeOut();
     }
@@ -121,12 +121,14 @@ const Hangman = () => {
   return (
     <section className='hangman'>
       <div className='hangman__content container'>
-        {/* <WinLosePopUp hasLost={hasLost} hasWon={hasWon} /> */}
+        {/* <WinLosePopUp /> */}
 
         <HangManScores
           score={streakWins}
           highestScore={highestScore}
           triesLeft={loses}
+          remainingTime={remainingTime}
+          hasLost={hasLost}
         />
         <HangmanBody
           hasLost={hasLost}
@@ -141,7 +143,8 @@ const Hangman = () => {
           guessedLetters={guessedLetters}
         />
         <HangmanKeyboard
-          disabled={hasLost || hasWon}
+          hasLost={hasLost}
+          hasWon={hasWon}
           startNewGame={startNewGame}
           addGuessedLetter={addGuessedLetter}
           inactiveLetters={incorrectLetters}
