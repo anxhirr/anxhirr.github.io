@@ -9,13 +9,17 @@ const BODY__PARTS = [
   <div className='hangman__drawing--right-leg' key={6} />,
 ];
 
-const HangmanBody = ({ incorrectLetters }) => {
+const HangmanBody = ({ incorrectLetters, hasLost }) => {
   return (
     <>
-      <div className='hangman__drawing'>
+      <div
+        className={`hangman__drawing ${
+          hasLost ? 'hangman__drawing--shake' : ''
+        }`}
+      >
         <div className='hangman__drawing--down' />
-        <div className='hangman__drawing--right' />
-        <div className='hangman__drawing--stand' />
+        <div className={`hangman__drawing--right `} />
+        <div className={`hangman__drawing--stand `} />
         <div className='hangman__drawing--ground' />
         {BODY__PARTS.slice(0, incorrectLetters.length)}
       </div>

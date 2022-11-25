@@ -3,7 +3,8 @@ import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
 import WordList from './WordList.json';
-import WinLosePopUp from './WinLosePopUp';
+// import WinLosePopUp from './WinLosePopUp';
+import HangManScores from './HangManScores';
 
 const getNewWord = () => {
   return WordList[Math.floor(Math.random() * WordList.length)];
@@ -13,6 +14,10 @@ const Hangman = () => {
   const [toGuessWord, setToGuessWord] = useState(getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const [streakWins, setStreakWins] = useState(0);
+  const [loses, setLoses] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
+
   const incorrectLetters = guessedLetters.filter(
     (letter) => !toGuessWord.includes(letter)
   );
@@ -20,22 +25,26 @@ const Hangman = () => {
   const hasLost = incorrectLetters.length >= 6;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
 
-  console.log(toGuessWord.length);
-
-  // useEffect(() => {
-  //   if (toGuessWord.length >= 6) {
-  //     setGuessedLetters((prev) => [
-  //       ...prev,
-  //       toGuessWord[Math.floor(Math.random() * toGuessWord.length)],
-  //     ]);
-  //   }
-  // }, []);
-  // console.log(guessedLetters);
-
   const startNewGame = () => {
     setToGuessWord(getNewWord());
     setGuessedLetters([]);
+
+    if (hasWon) {
+      setStreakWins((prev) => prev + 1);
+    }
+    if (hasLost) {
+      setLoses((prev) => prev + 1);
+    }
+    if (loses >= 3) {
+      setLoses(0);
+      setStreakWins(0);
+
+      if (streakWins > highestScore) setHighestScore(streakWins);
+    }
   };
+
+  console.log(streakWins);
+  console.log(loses);
 
   const addGuessedLetter = useCallback(
     (pressedKey) => {
@@ -73,15 +82,19 @@ const Hangman = () => {
     return () => {
       document.removeEventListener('keypress', handleEnterPress);
     };
-  }, [addGuessedLetter]);
-
-  const shouldPopUp = hasWon || hasLost;
+  }, [startNewGame]);
 
   return (
     <section className='hangman'>
       <div className='hangman__content container'>
-        {/* {shouldPopUp && <WinLosePopUp hasLost={hasLost} hasWon={hasWon} />} */}
+        {/* <WinLosePopUp hasLost={hasLost} hasWon={hasWon} /> */}
+        <HangManScores
+          score={streakWins}
+          highestScore={highestScore}
+          triesLeft={loses}
+        />
         <HangmanBody
+          hasLost={hasLost}
           incorrectLetters={incorrectLetters}
           startNewGame={startNewGame}
         />

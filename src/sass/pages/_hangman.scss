@@ -15,6 +15,19 @@
     }
   }
 
+  &__scores {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    &--score {
+    }
+    &--higest-score {
+    }
+    &--lifes {
+    }
+  }
+
   &__drawing {
     position: relative;
     display: flex;
@@ -106,6 +119,19 @@
       rotate: 60deg;
       background: var(--clr-black--1);
     }
+
+    &--shake &--left-arm {
+      animation: left-arm-rotate 0.2s infinite;
+    }
+    &--shake &--right-arm {
+      animation: right-arm-rotate 0.2s infinite;
+    }
+    &--shake &--left-leg {
+      animation: left-leg-rotate 0.2s infinite;
+    }
+    &--shake &--right-leg {
+      animation: right-leg-rotate 0.2s infinite;
+    }
   }
 
   &__word {
@@ -132,7 +158,7 @@
       visibility: visible;
     }
     &--hidden {
-      visibility: hidden;
+      // visibility: hidden;
     }
     &--red {
       color: var(--clr-red--strong);
@@ -194,9 +220,10 @@
   }
 
   &__modal {
+    @include absCenter;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 0.5rem;
     z-index: 1000;
-
-    &--close {
-    }
   }
 }

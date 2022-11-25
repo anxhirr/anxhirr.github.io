@@ -1,35 +1,17 @@
 import React from 'react';
+import Overlay from '../Overlay';
 
-import { useDispatch } from 'react-redux';
-import overlayActions from '../../store/overlay-slice';
-
-const WinLosePopUp = ({ hasLost, hasWon, startNewGame }) => {
-  const dispatch = useDispatch();
-
-  // const hangleModalClose = () => {
-  //   console.log('close');
-  //   dispatch(overlayActions.actions.setOverlay(false));
-  // };
-
-  // if (hasLost || hasWon) {
-  //   dispatch(overlayActions.actions.setOverlay(true));
-  // }
+const WinLosePopUp = ({ hasLost, hasWon }) => {
   return (
-    <>
-      <div className='overlay' />
+    <Overlay>
       <div className='hangman__modal'>
         <div>
           {hasWon ? 'Congratulations you just won' : ''}
           {hasLost ? 'Failed' : ''}
         </div>
-        <button
-          // onClick={() => startNewGame()}
-          className='hangman__modal--close'
-        >
-          close
-        </button>
+        <button className='hangman__modal--close'>close</button>
       </div>
-    </>
+    </Overlay>
   );
 };
 

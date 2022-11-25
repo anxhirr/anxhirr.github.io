@@ -100,3 +100,36 @@
     scale: 1;
   }
 }
+@keyframes left-arm-rotate {
+  0% {
+    rotate: 15deg;
+  }
+  100% {
+    rotate: 35deg;
+  }
+}
+@keyframes right-arm-rotate {
+  0% {
+    rotate: -15deg;
+  }
+
+  100% {
+    rotate: -35deg;
+  }
+}
+@keyframes left-leg-rotate {
+  0% {
+    rotate: -35deg;
+  }
+  100% {
+    rotate: -55deg;
+  }
+}
+@keyframes right-leg-rotate {
+  0% {
+    rotate: 35deg;
+  }
+  100% {
+    rotate: 55deg;
+  }
+}
