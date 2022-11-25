@@ -29,13 +29,17 @@ const KEYS = [
   'z',
 ];
 
-const HangmanKeyboard = ({
-  addGuessedLetter,
-  disabled,
-  startNewGame,
-  inactiveLetters,
-  correctLetters,
-}) => {
+const HangmanKeyboard = (props) => {
+  const {
+    addGuessedLetter,
+    disabled,
+    startNewGame,
+    inactiveLetters,
+    correctLetters,
+  } = props;
+
+  console.log(disabled);
+
   return (
     <div className='hangman__keyboard'>
       {KEYS.map((key) => {

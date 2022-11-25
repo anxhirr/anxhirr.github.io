@@ -1,6 +1,8 @@
 import React from 'react';
 
-const HangManScores = ({ score, triesLeft, highestScore }) => {
+const HangManScores = (props) => {
+  const { score, triesLeft, highestScore, remainingTime } = props;
+
   const lifes = 4 - triesLeft;
 
   return (
@@ -16,6 +18,10 @@ const HangManScores = ({ score, triesLeft, highestScore }) => {
       <div className='hangman__scores--lifes'>
         <span>Lifes Left:</span>
         <span>{lifes}</span>
+      </div>
+      <div className='hangman__scores--time'>
+        <span>Time Left:</span>
+        <span>{remainingTime}</span>
       </div>
     </div>
   );

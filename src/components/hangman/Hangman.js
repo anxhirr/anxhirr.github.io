@@ -10,6 +10,8 @@ const getNewWord = () => {
   return WordList[Math.floor(Math.random() * WordList.length)];
 };
 
+const TIME__LIMIT = 10;
+
 const Hangman = () => {
   const [toGuessWord, setToGuessWord] = useState(getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
@@ -18,6 +20,24 @@ const Hangman = () => {
   const [loses, setLoses] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
 
+  const [remainingTime, setRemainingTime] = useState(TIME__LIMIT);
+
+  const updateRemainingTime = () => {
+    setRemainingTime((remainingTime) => remainingTime - 1);
+  };
+
+  const handleTimeOut = useCallback(() => {
+    const unFoundLetters = toGuessWord
+      .split('')
+      .filter((letter) => !guessedLetters.includes(letter));
+
+    console.log(unFoundLetters);
+    setGuessedLetters((prev) => [
+      ...prev,
+      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)],
+    ]);
+  }, [toGuessWord, guessedLetters]);
+
   const incorrectLetters = guessedLetters.filter(
     (letter) => !toGuessWord.includes(letter)
   );
@@ -25,9 +45,10 @@ const Hangman = () => {
   const hasLost = incorrectLetters.length >= 6;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
 
-  const startNewGame = () => {
+  const startNewGame = useCallback(() => {
     setToGuessWord(getNewWord());
     setGuessedLetters([]);
+    setRemainingTime(TIME__LIMIT);
 
     if (hasWon) {
       setStreakWins((prev) => prev + 1);
@@ -41,10 +62,7 @@ const Hangman = () => {
 
       if (streakWins > highestScore) setHighestScore(streakWins);
     }
-  };
-
-  console.log(streakWins);
-  console.log(loses);
+  }, [hasLost, hasWon, highestScore, loses, streakWins]);
 
   const addGuessedLetter = useCallback(
     (pressedKey) => {
@@ -84,14 +102,31 @@ const Hangman = () => {
     };
   }, [startNewGame]);
 
+  useEffect(() => {
+    if (remainingTime === 0) {
+      return handleTimeOut();
+    }
+
+    const updateTimeInterval = setInterval(() => {
+      updateRemainingTime();
+    }, 1000);
+
+    return () => {
+      clearInterval(updateTimeInterval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remainingTime]);
+
   return (
     <section className='hangman'>
       <div className='hangman__content container'>
         {/* <WinLosePopUp hasLost={hasLost} hasWon={hasWon} /> */}
+
         <HangManScores
           score={streakWins}
           highestScore={highestScore}
           triesLeft={loses}
+          remainingTime={remainingTime}
         />
         <HangmanBody
           hasLost={hasLost}

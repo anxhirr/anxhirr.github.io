@@ -158,7 +158,7 @@
       visibility: visible;
     }
     &--hidden {
-      // visibility: hidden;
+      visibility: hidden;
     }
     &--red {
       color: var(--clr-red--strong);
@@ -202,6 +202,7 @@
     }
 
     &--wrong {
+      cursor: default;
       background: var(--clr-blue--1);
       color: var(--clr-white);
     }
@@ -225,5 +226,9 @@
     background-color: #fff;
     border-radius: 0.5rem;
     z-index: 1000;
+
+    &--text {
+      color: var(--clr-black--1);
+    }
   }
 }

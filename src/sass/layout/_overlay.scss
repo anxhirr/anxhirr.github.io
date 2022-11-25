@@ -8,4 +8,12 @@
   backdrop-filter: blur(2px);
   z-index: 100;
   transition: all 0.5s;
+
+  &__content {
+    @include absCenter;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    z-index: 1000;
+  }
 }
