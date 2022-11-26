@@ -239,12 +239,11 @@
       animation: keyboard-pulse 0.5s infinite;
     }
 
-    &--new-game {
-      background-color: #fff;
-
-      &--pulse {
-        animation: keyboard-pulse 0.5s infinite;
-      }
+    // &--next-word {
+    //   background-color: #fff;
+    // }
+    &--pulse {
+      animation: keyboard-pulse 0.5s infinite;
     }
   }
 

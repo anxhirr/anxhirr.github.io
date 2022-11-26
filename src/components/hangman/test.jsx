@@ -57,11 +57,12 @@ const HangmanKeyboard = (props) => {
           <button
             onClick={() => addGuessedLetter(key)}
             key={key}
-            className={`hangman__key ${isWrong ? 'hangman__key--wrong ' : ''} ${
-              disabled ? 'hangman__key--no-hover' : ''
-            } ${isCorrect ? 'hangman__key--correct' : ''} ${
-              shouldShowHint && !hasLost ? 'hangman__key--hint' : ''
-            }`}
+            className={`hangman__key 
+            ${isWrong ? 'hangman__key--wrong ' : ''} 
+            ${disabled ? 'hangman__key--no-hover' : ''} 
+            ${isCorrect ? 'hangman__key--correct' : ''} 
+            ${shouldShowHint && !hasLost ? 'hangman__key--hint' : ''} 
+            `}
             disabled={isDisabled}
           >
             {key}

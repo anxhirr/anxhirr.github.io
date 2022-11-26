@@ -1,14 +1,12 @@
 import React from 'react';
 
-const HangManScores = (props) => {
-  const { remainingTime, score, highestScore, triesLeft, hasLost } = props;
+const HangManDashboard = (props) => {
+  const { remainingTime, score, highestScore, lifes, hasLost } = props;
 
   let shouldPulse = remainingTime <= 3;
   const shouldHideHint = remainingTime === 0;
   if (remainingTime === 0) shouldPulse = false;
   if (hasLost) shouldPulse = false;
-
-  const lifes = 4 - triesLeft;
 
   return (
     <div className='hangman__scores'>
@@ -41,4 +39,4 @@ const HangManScores = (props) => {
   );
 };
 
-export default HangManScores;
+export default HangManDashboard;

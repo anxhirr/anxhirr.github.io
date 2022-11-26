@@ -3,20 +3,21 @@ import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
 import WordList from './WordList.json';
-import HangManScores from './HangManScores';
+import HangManDashboard from './HangManDashboard';
 
 const getNewWord = () => {
   return WordList[Math.floor(Math.random() * WordList.length)];
 };
 
 const TIME__LIMIT = 15;
+const LIFES = 4;
 
 const Hangman = () => {
   const [toGuessWord, setToGuessWord] = useState(getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  const [streakWins, setStreakWins] = useState(0);
-  const [loses, setLoses] = useState(0);
+  const [score, setScore] = useState(0);
+  const [lifes, setLifes] = useState(LIFES);
   const [highestScore, setHighestScore] = useState(0);
 
   const [remainingTime, setRemainingTime] = useState(TIME__LIMIT);
@@ -26,6 +27,7 @@ const Hangman = () => {
   const incorrectLetters = guessedLetters.filter(
     (letter) => !toGuessWord.includes(letter)
   );
+
   const hasLost = incorrectLetters.length >= 6;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
 
@@ -44,24 +46,25 @@ const Hangman = () => {
     setKeyHint(hintKey);
   }, [guessedLetters, toGuessWord]);
 
-  const startNewGame = useCallback(() => {
+  const updateDashboard = () => {
     setToGuessWord(getNewWord());
     setGuessedLetters([]);
     setRemainingTime(TIME__LIMIT);
     setKeyHint(null);
+  };
 
-    if (hasWon) {
-      setStreakWins((prev) => prev + 1);
-    }
-    if (hasLost) {
-      setLoses((prev) => prev + 1);
-    }
-    if (loses >= 3) {
-      setLoses(0);
-      setStreakWins(0);
-      if (streakWins >= highestScore) setHighestScore(streakWins);
-    }
-  }, [hasLost, hasWon, highestScore, loses, streakWins]);
+  const startNewGame = useCallback(() => {
+    updateDashboard();
+    setLifes(LIFES);
+    setScore(0);
+    if (score > highestScore) setHighestScore(score);
+  }, [highestScore, score]);
+
+  const handleNextWord = useCallback(() => {
+    updateDashboard();
+    if (hasWon) setScore((prev) => prev + 1);
+    if (!hasWon || hasLost) setLifes((prev) => prev - 1);
+  }, [hasLost, hasWon]);
 
   const addGuessedLetter = useCallback(
     (pressedKey) => {
@@ -78,9 +81,7 @@ const Hangman = () => {
 
       addGuessedLetter(pressedKey);
     };
-
     document.addEventListener('keypress', handleKeyPress);
-
     return () => {
       document.removeEventListener('keypress', handleKeyPress);
     };
@@ -90,24 +91,20 @@ const Hangman = () => {
     const handleEnterPress = (e) => {
       const pressedKey = e.key;
       if (pressedKey !== 'Enter') return;
-
-      startNewGame();
+      if (lifes === 0) startNewGame();
+      if (lifes > 0) handleNextWord();
     };
-
     document.addEventListener('keypress', handleEnterPress);
-
     return () => {
       document.removeEventListener('keypress', handleEnterPress);
     };
-  }, [startNewGame]);
+  }, [handleNextWord, lifes, startNewGame]);
 
   useEffect(() => {
     if (hasLost) return;
-
     if (remainingTime === 0) {
       return handleTimeOut();
     }
-
     const updateTimeInterval = setInterval(() => {
       updateRemainingTime();
     }, 1000);
@@ -123,10 +120,10 @@ const Hangman = () => {
       <div className='hangman__content container'>
         {/* <WinLosePopUp /> */}
 
-        <HangManScores
-          score={streakWins}
+        <HangManDashboard
+          score={score}
           highestScore={highestScore}
-          triesLeft={loses}
+          lifes={lifes}
           remainingTime={remainingTime}
           hasLost={hasLost}
         />
@@ -150,6 +147,8 @@ const Hangman = () => {
           inactiveLetters={incorrectLetters}
           correctLetters={guessedLetters.filter((l) => toGuessWord.includes(l))}
           keyHint={keyHint}
+          lifes={lifes}
+          handleNextWord={handleNextWord}
         />
       </div>
     </section>
