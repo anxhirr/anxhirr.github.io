@@ -195,19 +195,18 @@
   }
 
   &__keyboard {
-    align-self: stretch;
-    margin: 0 auto;
     max-width: 85rem;
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: center;
     gap: 0.65rem;
+    width: 100%;
 
     & > * {
       gap: 0.65rem;
       display: flex;
-      justify-content: center;
+      justify-content: stretch;
     }
   }
 
@@ -215,21 +214,22 @@
     font-size: 1.8rem;
     font-weight: 600;
     text-transform: uppercase;
-    padding: 2rem 3rem;
-    aspect-ratio: 2/1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     box-shadow: var(--box-shadow-keyboard);
     background: var(--clr-white-2);
     border-radius: 0.8rem;
     animation: keyboard-zoom-out 1s forwards;
 
-    @include responsive(900) {
-      padding: 1.5rem 1.5rem;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-height: 46px;
+
     @include responsive(600) {
-      padding: 1rem 1rem;
-    }
-    @include responsive(400) {
-      padding: 0.5rem 0.5rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     &:hover:not(&--wrong, &--correct, &--no-hover) {
