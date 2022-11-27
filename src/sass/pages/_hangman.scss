@@ -12,7 +12,13 @@
     width: 100%;
   }
 
-  &__scores {
+  &__dashboard--box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__dashboard {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
@@ -22,7 +28,7 @@
     //   &--pulse {
     //   }
     // }
-    // &--higest-score {
+    // &--highest-score {
     // }
     // &--lifes {
     // }
@@ -43,12 +49,11 @@
     }
   }
 
-  // &__hint {
-  //   // position: absolute;
-  //   // top: 3rem;
-  //   // left: 4rem;
-
-  // }
+  &__new-game-key--box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__drawing {
     position: relative;
@@ -203,7 +208,7 @@
     gap: 0.65rem;
     width: 100%;
 
-    & > * {
+    [class*='--row-'] {
       gap: 0.65rem;
       display: flex;
       justify-content: stretch;
@@ -213,6 +218,7 @@
   &__key {
     font-size: 1.8rem;
     font-weight: 600;
+    font-family: monospace;
     text-transform: uppercase;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -225,7 +231,6 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    min-height: 46px;
 
     @include responsive(600) {
       padding-top: 1rem;
@@ -254,27 +259,37 @@
       animation: keyboard-pulse 0.5s infinite;
     }
 
-    // &--next-word,
-    // &--new-game {
-    //   background-color: #fff;
-    //   padding-left: 0.3rem;
-    //   padding-right: 0.3rem;
-    //   min-width: fit-content;
-    // }
+    &--next-word,
+    &--new-game {
+      background-color: #fff;
+    }
+
+    &--new-game {
+      flex-grow: 0;
+      padding: 2rem 3rem;
+    }
     &--pulse {
       animation: keyboard-pulse 0.5s infinite;
     }
   }
 
-  &__modal {
+  &__modal--box {
     @include absCenter;
     position: fixed;
     background-color: #fff;
     border-radius: 0.5rem;
     z-index: 1000;
+  }
+  &__modal {
+    color: var(--clr-black--1);
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 
-    &--text {
-      color: var(--clr-black--1);
+    &--keys {
+      display: flex;
+      gap: 2rem;
     }
   }
 }

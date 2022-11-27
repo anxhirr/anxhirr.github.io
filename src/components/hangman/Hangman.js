@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hangmanActions } from '../../store/Hangman-slice';
 
@@ -6,22 +6,21 @@ import HangManDashboard from './dashboard/HangManDashboard';
 import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
+import WinLosePopUp from './WinLosePopUp';
 import PARTS from './PARTS';
-console.log(PARTS.length);
 
-const TRIES = PARTS.length;
+const TRIES__LEFT = PARTS.length;
 
 const Hangman = () => {
   const dispatch = useDispatch();
-
   const { toGuessWord } = useSelector((state) => state.hangman);
   const { guessedLetters } = useSelector((state) => state.hangman);
   const { score } = useSelector((state) => state.hangman);
-  const { lifes } = useSelector((state) => state.hangman);
   const { highestScore } = useSelector((state) => state.hangman);
+  const { lifes } = useSelector((state) => state.hangman);
   const { remainingTime } = useSelector((state) => state.hangman);
-
-  const [keyHint, setKeyHint] = useState(null);
+  const { showModule } = useSelector((state) => state.hangman);
+  const { keyHint } = useSelector((state) => state.hangman);
 
   const incorrectLetters = guessedLetters.filter(
     (letter) => !toGuessWord.includes(letter)
@@ -30,26 +29,14 @@ const Hangman = () => {
     toGuessWord.includes(letter)
   );
 
-  const hasLost = incorrectLetters.length >= TRIES;
+  const hasLost = incorrectLetters.length >= TRIES__LEFT || lifes === 0;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
-
-  const handleTimeOut = useCallback(() => {
-    if (lifes === 0) return;
-    const unFoundLetters = toGuessWord
-      .split('')
-      .filter((letter) => !guessedLetters.includes(letter));
-
-    const hintKey =
-      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)];
-
-    setKeyHint(hintKey);
-  }, [guessedLetters, lifes, toGuessWord]);
 
   const update = useCallback(() => {
     dispatch(hangmanActions.updateToGuessWord());
     dispatch(hangmanActions.resetGuessedLetters());
     dispatch(hangmanActions.resetRemainingTime());
-    setKeyHint(null);
+    dispatch(hangmanActions.resetKeyHint());
   }, [dispatch]);
 
   const startNewGame = useCallback(() => {
@@ -59,35 +46,25 @@ const Hangman = () => {
     if (score > highestScore) dispatch(hangmanActions.setHighestScore(score));
   }, [dispatch, highestScore, score, update]);
 
-  const handleNextWord = useCallback(() => {
-    update();
-    if (hasWon) dispatch(hangmanActions.addScore());
-    if (!hasWon || hasLost) dispatch(hangmanActions.decreaseLife());
-  }, [dispatch, hasLost, hasWon, update]);
-
   useEffect(() => {
-    const handleEnterPress = (e) => {
-      const pressedKey = e.key;
-      if (pressedKey !== 'Enter') return;
-      if (lifes === 0) startNewGame();
-      if (lifes > 0) handleNextWord();
-    };
-    document.addEventListener('keypress', handleEnterPress);
-    return () => {
-      document.removeEventListener('keypress', handleEnterPress);
-    };
-  }, [handleNextWord, lifes, startNewGame]);
+    if (lifes === 0) dispatch(hangmanActions.setShowModal(true));
+  }, [dispatch, lifes]);
 
   return (
     <section className='hangman'>
       <div className='hangman__content'>
-        {/* <WinLosePopUp /> */}
+        {showModule && (
+          <WinLosePopUp
+            startNewGame={startNewGame}
+            hasLost={hasLost}
+            hasWon={hasWon}
+          />
+        )}
 
-        <HangManDashboard handleTimeOut={handleTimeOut} hasLost={hasLost} />
+        <HangManDashboard startNewGame={startNewGame} hasLost={hasLost} />
         <HangmanBody
           hasLost={hasLost}
           incorrectLetters={incorrectLetters}
-          startNewGame={startNewGame}
           remainingTime={remainingTime}
         />
         <HangmanWord
@@ -98,12 +75,11 @@ const Hangman = () => {
         <HangmanKeyboard
           hasLost={hasLost}
           hasWon={hasWon}
-          startNewGame={startNewGame}
           incorrectLetters={incorrectLetters}
           correctLetters={correctLetters}
           keyHint={keyHint}
           lifes={lifes}
-          handleNextWord={handleNextWord}
+          update={update}
         />
       </div>
     </section>
