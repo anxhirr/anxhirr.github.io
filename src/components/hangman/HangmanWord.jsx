@@ -14,6 +14,7 @@ const HangmanWord = (props) => {
 
         return (
           <span key={index} className='hangman__letter--border'>
+            &nbsp;
             <span
               key={index}
               className={`${

@@ -173,6 +173,10 @@
       background: var(--clr-black--1);
     }
 
+    &--shake &--down {
+      // animation: hangman-death 1s ease 2s forwards;
+    }
+
     &--shake &--left-arm {
       animation: left-arm-rotate 0.2s infinite;
     }
@@ -194,6 +198,7 @@
     grid-auto-flow: column;
     gap: 2rem;
     text-transform: uppercase;
+    font-family: monospace;
   }
 
   &__letter {
@@ -202,16 +207,26 @@
       padding: 0 1rem;
       border-bottom: 1rem solid var(--clr-black--1);
       text-align: center;
+      position: relative;
 
       @include responsive(600) {
         padding: 0;
       }
+
+      & > span {
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+      }
     }
-    &--visible {
-      visibility: visible;
-    }
+
     &--hidden {
       visibility: hidden;
+      opacity: 0;
+      top: 10rem;
+    }
+    &--visible {
+      animation: slide-up 0.5s ease forwards;
     }
     &--red {
       color: var(--clr-red--strong);
@@ -233,6 +248,7 @@
     justify-content: center;
     gap: 0.65rem;
     width: 100%;
+    margin-top: 2rem;
 
     [class*='--row-'] {
       gap: 0.65rem;

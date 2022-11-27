@@ -17,7 +17,7 @@ const initialState = {
   remainingTime: TIME__LIMIT,
   keyHint: null,
   showModal: false,
-  showSettingsModule: false,
+  // showSettingsModule: false,
 };
 
 const hangmanSlice = createSlice({
@@ -66,9 +66,9 @@ const hangmanSlice = createSlice({
     setShowModal: (state, action) => {
       state.showModal = action.payload;
     },
-    toggleShowSettingsModal: (state) => {
-      state.showSettingsModule = !state.showSettingsModule;
-    },
+    // toggleShowSettingsModal: (state) => {
+    //   state.showSettingsModule = !state.showSettingsModule;
+    // },
   },
 });
 

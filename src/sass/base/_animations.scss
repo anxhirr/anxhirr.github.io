@@ -133,3 +133,25 @@
     rotate: 55deg;
   }
 }
+
+// @keyframes hangman-death {
+//   0% {
+//     top: 0;
+//   }
+//   100% {
+//     top: 5rem;
+//   }
+// }
+
+@keyframes slide-up {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    top: 10rem;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+  }
+}

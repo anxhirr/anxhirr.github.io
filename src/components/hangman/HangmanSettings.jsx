@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FiSettings } from 'react-icons/fi';
-import SettingsPopUp from './SettingsPopUp';
+import { useDispatch, useSelector } from 'react-redux';
+import { hangmanActions } from '../../store/Hangman-slice';
+import SettingOptionsPopUp from './popup/SettingOptionsPopUp';
 
 const HangmanSettings = () => {
-  const [showSettings, setShowSettings] = useState(false);
+  const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.hangman.showModal);
 
   const handleSettings = () => {
-    setShowSettings(true);
+    dispatch(hangmanActions.setShowModal(true));
   };
 
   return (
     <>
-      {showSettings && <SettingsPopUp setShowSettings={setShowSettings} />}
+      {showModal && <SettingOptionsPopUp />}
       <div className='hangman__header'>
         <div className='hangman__heading'>Hangman</div>
         <span onClick={handleSettings} className='hangman__settings-icon--box'>
