@@ -6,8 +6,10 @@ import HangManDashboard from './dashboard/HangManDashboard';
 import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
+import PARTS from './PARTS';
+console.log(PARTS.length);
 
-const TRIES = 8;
+const TRIES = PARTS.length;
 
 const Hangman = () => {
   const dispatch = useDispatch();
