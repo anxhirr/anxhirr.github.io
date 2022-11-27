@@ -8,6 +8,7 @@ import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
 import WinLosePopUp from './WinLosePopUp';
 import PARTS from './PARTS';
+import HangmanSettings from './HangmanSettings';
 
 const TRIES__LEFT = PARTS.length;
 
@@ -19,7 +20,7 @@ const Hangman = () => {
   const { highestScore } = useSelector((state) => state.hangman);
   const { lifes } = useSelector((state) => state.hangman);
   const { remainingTime } = useSelector((state) => state.hangman);
-  const { showModule } = useSelector((state) => state.hangman);
+  const { showModal } = useSelector((state) => state.hangman);
   const { keyHint } = useSelector((state) => state.hangman);
 
   const incorrectLetters = guessedLetters.filter(
@@ -53,13 +54,15 @@ const Hangman = () => {
   return (
     <section className='hangman'>
       <div className='hangman__content'>
-        {showModule && (
+        {showModal && (
           <WinLosePopUp
             startNewGame={startNewGame}
             hasLost={hasLost}
             hasWon={hasWon}
           />
         )}
+
+        <HangmanSettings />
 
         <HangManDashboard startNewGame={startNewGame} hasLost={hasLost} />
         <HangmanBody
