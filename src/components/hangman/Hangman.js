@@ -1,41 +1,38 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { hangmanActions } from '../../store/Hangman-slice';
+
+import HangManDashboard from './dashboard/HangManDashboard';
 import HangmanBody from './HangmanBody';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
-import WordList from './WordList.json';
-import HangManDashboard from './HangManDashboard';
 
-const getNewWord = () => {
-  return WordList[Math.floor(Math.random() * WordList.length)];
-};
-
-const TIME__LIMIT = 15;
-const LIFES = 4;
+const TRIES = 8;
 
 const Hangman = () => {
-  const [toGuessWord, setToGuessWord] = useState(getNewWord());
-  const [guessedLetters, setGuessedLetters] = useState([]);
+  const dispatch = useDispatch();
 
-  const [score, setScore] = useState(0);
-  const [lifes, setLifes] = useState(LIFES);
-  const [highestScore, setHighestScore] = useState(0);
-
-  const [remainingTime, setRemainingTime] = useState(TIME__LIMIT);
+  const { toGuessWord } = useSelector((state) => state.hangman);
+  const { guessedLetters } = useSelector((state) => state.hangman);
+  const { score } = useSelector((state) => state.hangman);
+  const { lifes } = useSelector((state) => state.hangman);
+  const { highestScore } = useSelector((state) => state.hangman);
+  const { remainingTime } = useSelector((state) => state.hangman);
 
   const [keyHint, setKeyHint] = useState(null);
 
   const incorrectLetters = guessedLetters.filter(
     (letter) => !toGuessWord.includes(letter)
   );
+  const correctLetters = guessedLetters.filter((letter) =>
+    toGuessWord.includes(letter)
+  );
 
-  const hasLost = incorrectLetters.length >= 6;
+  const hasLost = incorrectLetters.length >= TRIES;
   const hasWon = toGuessWord.split('').every((l) => guessedLetters.includes(l));
 
-  const updateRemainingTime = () => {
-    setRemainingTime((remainingTime) => remainingTime - 1);
-  };
-
   const handleTimeOut = useCallback(() => {
+    if (lifes === 0) return;
     const unFoundLetters = toGuessWord
       .split('')
       .filter((letter) => !guessedLetters.includes(letter));
@@ -44,48 +41,27 @@ const Hangman = () => {
       unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)];
 
     setKeyHint(hintKey);
-  }, [guessedLetters, toGuessWord]);
+  }, [guessedLetters, lifes, toGuessWord]);
 
-  const updateDashboard = () => {
-    setToGuessWord(getNewWord());
-    setGuessedLetters([]);
-    setRemainingTime(TIME__LIMIT);
+  const update = useCallback(() => {
+    dispatch(hangmanActions.updateToGuessWord());
+    dispatch(hangmanActions.resetGuessedLetters());
+    dispatch(hangmanActions.resetRemainingTime());
     setKeyHint(null);
-  };
+  }, [dispatch]);
 
   const startNewGame = useCallback(() => {
-    updateDashboard();
-    setLifes(LIFES);
-    setScore(0);
-    if (score > highestScore) setHighestScore(score);
-  }, [highestScore, score]);
+    update();
+    dispatch(hangmanActions.resetLifes());
+    dispatch(hangmanActions.resetScore());
+    if (score > highestScore) dispatch(hangmanActions.setHighestScore(score));
+  }, [dispatch, highestScore, score, update]);
 
   const handleNextWord = useCallback(() => {
-    updateDashboard();
-    if (hasWon) setScore((prev) => prev + 1);
-    if (!hasWon || hasLost) setLifes((prev) => prev - 1);
-  }, [hasLost, hasWon]);
-
-  const addGuessedLetter = useCallback(
-    (pressedKey) => {
-      if (hasLost || hasWon) return;
-      setGuessedLetters((prev) => [...prev, pressedKey]);
-    },
-    [hasLost, hasWon]
-  );
-
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      const pressedKey = e.key;
-      if (!pressedKey.match(/^[a-zA-Z]$/)) return;
-
-      addGuessedLetter(pressedKey);
-    };
-    document.addEventListener('keypress', handleKeyPress);
-    return () => {
-      document.removeEventListener('keypress', handleKeyPress);
-    };
-  }, [addGuessedLetter]);
+    update();
+    if (hasWon) dispatch(hangmanActions.addScore());
+    if (!hasWon || hasLost) dispatch(hangmanActions.decreaseLife());
+  }, [dispatch, hasLost, hasWon, update]);
 
   useEffect(() => {
     const handleEnterPress = (e) => {
@@ -100,33 +76,12 @@ const Hangman = () => {
     };
   }, [handleNextWord, lifes, startNewGame]);
 
-  useEffect(() => {
-    if (hasLost) return;
-    if (remainingTime === 0) {
-      return handleTimeOut();
-    }
-    const updateTimeInterval = setInterval(() => {
-      updateRemainingTime();
-    }, 1000);
-
-    return () => {
-      clearInterval(updateTimeInterval);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [remainingTime]);
-
   return (
     <section className='hangman'>
-      <div className='hangman__content container'>
+      <div className='hangman__content'>
         {/* <WinLosePopUp /> */}
 
-        <HangManDashboard
-          score={score}
-          highestScore={highestScore}
-          lifes={lifes}
-          remainingTime={remainingTime}
-          hasLost={hasLost}
-        />
+        <HangManDashboard handleTimeOut={handleTimeOut} hasLost={hasLost} />
         <HangmanBody
           hasLost={hasLost}
           incorrectLetters={incorrectLetters}
@@ -136,16 +91,14 @@ const Hangman = () => {
         <HangmanWord
           hasLost={hasLost}
           hasWon={hasWon}
-          toGuessWord={toGuessWord}
           guessedLetters={guessedLetters}
         />
         <HangmanKeyboard
           hasLost={hasLost}
           hasWon={hasWon}
           startNewGame={startNewGame}
-          addGuessedLetter={addGuessedLetter}
-          inactiveLetters={incorrectLetters}
-          correctLetters={guessedLetters.filter((l) => toGuessWord.includes(l))}
+          incorrectLetters={incorrectLetters}
+          correctLetters={correctLetters}
           keyHint={keyHint}
           lifes={lifes}
           handleNextWord={handleNextWord}

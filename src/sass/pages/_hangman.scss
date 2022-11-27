@@ -9,10 +9,7 @@
     background-color: #fff;
     padding: 5rem 0;
     position: relative;
-
-    @include responsive(400) {
-      width: 100%;
-    }
+    width: 100%;
   }
 
   &__scores {
@@ -20,14 +17,14 @@
     gap: 2rem;
     flex-wrap: wrap;
 
-    &--score {
-      &--pulse {
-      }
-    }
-    &--higest-score {
-    }
-    &--lifes {
-    }
+    // &--score {
+    //   &--pulse {
+    //   }
+    // }
+    // &--higest-score {
+    // }
+    // &--lifes {
+    // }
 
     &-hint {
       padding: 0 0.3rem;
@@ -199,11 +196,18 @@
   &__keyboard {
     align-self: stretch;
     margin: 0 auto;
-    max-width: 80rem;
-    justify-content: center;
+    max-width: 85rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
     gap: 0.65rem;
+
+    & > * {
+      gap: 0.65rem;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__key {
@@ -216,6 +220,16 @@
     background: var(--clr-white-2);
     border-radius: 0.8rem;
     animation: keyboard-zoom-out 1s forwards;
+
+    @include responsive(900) {
+      padding: 1.5rem 1.5rem;
+    }
+    @include responsive(600) {
+      padding: 1rem 1rem;
+    }
+    @include responsive(400) {
+      padding: 0.5rem 0.5rem;
+    }
 
     &:hover:not(&--wrong, &--correct, &--no-hover) {
       animation: keyboard-zoom-in 0.5s forwards;
@@ -239,8 +253,12 @@
       animation: keyboard-pulse 0.5s infinite;
     }
 
-    // &--next-word {
+    // &--next-word,
+    // &--new-game {
     //   background-color: #fff;
+    //   padding-left: 0.3rem;
+    //   padding-right: 0.3rem;
+    //   min-width: fit-content;
     // }
     &--pulse {
       animation: keyboard-pulse 0.5s infinite;

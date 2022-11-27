@@ -1,13 +1,5 @@
 import React from 'react';
-
-const BODY__PARTS = [
-  <div className='hangman__drawing--head' key={1} />,
-  <div className='hangman__drawing--body' key={2} />,
-  <div className='hangman__drawing--left-arm' key={3} />,
-  <div className='hangman__drawing--right-arm' key={4} />,
-  <div className='hangman__drawing--left-leg' key={5} />,
-  <div className='hangman__drawing--right-leg' key={6} />,
-];
+import PARTS from './PARTS';
 
 const HangmanBody = ({ incorrectLetters, hasLost }) => {
   return (
@@ -17,11 +9,9 @@ const HangmanBody = ({ incorrectLetters, hasLost }) => {
           hasLost ? 'hangman__drawing--shake' : ''
         }`}
       >
-        <div className='hangman__drawing--down' />
-        <div className={`hangman__drawing--right `} />
+        {PARTS.slice(0, incorrectLetters.length)}
         <div className={`hangman__drawing--stand `} />
         <div className='hangman__drawing--ground' />
-        {BODY__PARTS.slice(0, incorrectLetters.length)}
       </div>
     </>
   );

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const HangmanWord = (props) => {
-  const { toGuessWord, guessedLetters, hasLost, hasWon } = props;
+  const { guessedLetters, hasLost, hasWon } = props;
+
+  const { toGuessWord } = useSelector((state) => state.hangman);
 
   return (
     <div className='hangman__word'>
