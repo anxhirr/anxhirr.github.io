@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hangmanActions } from '../../store/Hangman-slice';
 
 import HangManDashboard from './dashboard/HangManDashboard';
-import HangmanBody from './HangmanBody';
+import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
-import WinLosePopUp from './popup/WinLosePopUp';
-import { PARTS } from './HangmanBody';
+import WinLosePopUp from './modal/ConfirmModal';
+import { PARTS } from './HangmanDrawing';
 import HangmanSettings from './HangmanSettings';
+import HangmanNewGameBtn from './HangmanNewGameBtn';
 
 const TRIES__LEFT = PARTS.length;
 
@@ -19,7 +20,7 @@ const Hangman = () => {
   const { score } = useSelector((state) => state.hangman);
   const { highestScore } = useSelector((state) => state.hangman);
   const { lifes } = useSelector((state) => state.hangman);
-  const { showModal } = useSelector((state) => state.hangman);
+  const { showWinLoseModal } = useSelector((state) => state.hangman);
   const { keyHint } = useSelector((state) => state.hangman);
 
   const incorrectLetters = guessedLetters.filter(
@@ -47,25 +48,25 @@ const Hangman = () => {
   }, [dispatch, highestScore, score, update]);
 
   useEffect(() => {
-    if (lifes === 0) dispatch(hangmanActions.setShowModal(true));
+    if (lifes === 0) dispatch(hangmanActions.setShowWinLoseModal(true));
   }, [dispatch, lifes]);
 
   return (
     <section className='hangman'>
       <div className='hangman__content'>
-        {showModal && (
+        {showWinLoseModal && (
           <WinLosePopUp
             startNewGame={startNewGame}
             hasLost={hasLost}
             hasWon={hasWon}
           />
         )}
-
         <HangmanSettings />
+        <HangManDashboard hasLost={hasLost} />
 
-        <HangManDashboard startNewGame={startNewGame} hasLost={hasLost} />
+        <HangmanNewGameBtn hasLost={hasLost} startNewGame={startNewGame} />
 
-        <HangmanBody hasLost={hasLost} incorrectLetters={incorrectLetters} />
+        <HangmanDrawing hasLost={hasLost} incorrectLetters={incorrectLetters} />
         <HangmanWord
           hasLost={hasLost}
           hasWon={hasWon}

@@ -53,12 +53,10 @@
     display: none;
     z-index: 999;
 
-    position: fixed;
-    top: 2.5rem;
-    right: 2.5rem;
-
     &--checked .nav__background {
       transform: scale(200);
+      height: 1rem;
+      width: 1rem;
     }
 
     @include responsive(600) {
@@ -71,8 +69,6 @@
     top: 3.3rem;
     right: 3.3rem;
     background-color: var(--clr-blue--2);
-    height: 3rem;
-    width: 3rem;
     border-radius: 50%;
     z-index: -1;
     transition: all 0.5s;

@@ -16,8 +16,8 @@ const initialState = {
   highestScore: 0,
   remainingTime: TIME__LIMIT,
   keyHint: null,
-  showModal: false,
-  // showSettingsModule: false,
+  showWinLoseModal: false,
+  showSettingOptionsModal: false,
 };
 
 const hangmanSlice = createSlice({
@@ -60,15 +60,12 @@ const hangmanSlice = createSlice({
     resetKeyHint: (state) => {
       state.keyHint = null;
     },
-    toggleShowModal: (state) => {
-      state.showModal = !state.showModal;
+    setShowWinLoseModal: (state, action) => {
+      state.showWinLoseModal = action.payload;
     },
-    setShowModal: (state, action) => {
-      state.showModal = action.payload;
+    setShowSettingOptionsModal: (state, action) => {
+      state.showSettingOptionsModal = action.payload;
     },
-    // toggleShowSettingsModal: (state) => {
-    //   state.showSettingsModule = !state.showSettingsModule;
-    // },
   },
 });
 

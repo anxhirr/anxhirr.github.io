@@ -43,12 +43,12 @@ const HangmanTime = ({ hasLost }) => {
 
   return (
     <div
-      className={`hangman__scores-hint ${
-        shouldPulse ? 'hangman__scores-hint--pulse' : ''
+      className={`hangman-dashboard__hint ${
+        shouldPulse ? 'hangman-dashboard__hint--pulse' : ''
       } ${
         shouldHide
-          ? 'hangman__scores-hint--hidden'
-          : 'hangman__scores-hint--visible'
+          ? 'hangman-dashboard__hint--hidden'
+          : 'hangman-dashboard__hint--visible'
       }`}
     >
       <span>Hint after:</span>

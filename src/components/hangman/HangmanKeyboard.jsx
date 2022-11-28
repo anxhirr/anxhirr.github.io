@@ -2,10 +2,42 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hangmanActions } from '../../store/Hangman-slice';
 
+// const KEYS = [
+//   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+//   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+//   ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Next'],
+// ];
 const KEYS = [
-  ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-  ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Next'],
+  'q',
+  'w',
+  'e',
+  'r',
+  't',
+  'y',
+  'u',
+  'i',
+  'o',
+  'p',
+  'empty-space',
+  'a',
+  's',
+  'd',
+  'f',
+  'g',
+  'h',
+  'j',
+  'k',
+  'l',
+  'empty-space',
+  'empty-space',
+  'z',
+  'x',
+  'c',
+  'v',
+  'b',
+  'n',
+  'm',
+  'Next',
 ];
 
 const HangmanKeyboard = (props) => {
@@ -64,49 +96,94 @@ const HangmanKeyboard = (props) => {
     lifes,
   ]);
 
+  // return (
+  //   <div className='hangman-keyboard__keyboard'>
+  //     {KEYS.map((keyRow, rowIndex) => {
+  //       return (
+  //         <div key={keyRow} className={`hangman-keyboard__keyboard--row-${rowIndex}`}>
+  //           {keyRow.map((key) => {
+  //             const isWrong = incorrectLetters.includes(key);
+  //             const isCorrect = correctLetters.includes(key);
+  //             const isDisabled =
+  //               hasLost || hasWon || lifes === 0 || isWrong || isCorrect;
+  //             let shouldShowHint = keyHint === key;
+  //             if (isCorrect) shouldShowHint = false;
+
+  //             if (key === 'Next' && lifes > 0) {
+  //               return (
+  //                 <button
+  //                   key={key}
+  //                   onClick={() => handleNextWord()}
+  //                   className={`hangman-keyboard__key hangman-keyboard__key--next-word ${
+  //                     isDisabled ? 'hangman-keyboard__key--pulse' : ''
+  //                   }`}
+  //                 >
+  //                   {key}
+  //                 </button>
+  //               );
+  //             }
+
+  //             return (
+  //               <button
+  //                 onClick={() => addGuessedLetter(key)}
+  //                 key={key}
+  //                 className={`hangman-keyboard__key ${
+  //                   isWrong ? 'hangman-keyboard__key--wrong ' : ''
+  //                 } ${isDisabled ? 'hangman-keyboard__key--no-hover' : ''} ${
+  //                   isCorrect ? 'hangman-keyboard__key--correct' : ''
+  //                 } ${shouldShowHint && !hasLost ? 'hangman-keyboard__key--hint' : ''}`}
+  //                 disabled={isDisabled}
+  //               >
+  //                 {key}
+  //               </button>
+  //             );
+  //           })}
+  //         </div>
+  //       );
+  //     })}
+  //   </div>
+  // );
   return (
-    <div className='hangman__keyboard'>
-      {KEYS.map((keyRow, rowIndex) => {
+    <div className='hangman-keyboard'>
+      {KEYS.map((key) => {
+        const isWrong = incorrectLetters.includes(key);
+        const isCorrect = correctLetters.includes(key);
+        const isDisabled =
+          hasLost || hasWon || lifes === 0 || isWrong || isCorrect;
+        let shouldShowHint = keyHint === key;
+        if (isCorrect) shouldShowHint = false;
+
+        if (key === 'Next' && lifes > 0) {
+          return (
+            <button
+              key={key}
+              onClick={() => handleNextWord()}
+              className={`hangman-keyboard__key hangman-keyboard__key--next-word ${
+                isDisabled ? 'hangman-keyboard__key--pulse' : ''
+              }`}
+            >
+              {key}
+            </button>
+          );
+        }
+
+        if (key === 'empty-space') return <div key={key}></div>;
+
         return (
-          <div key={keyRow} className={`hangman__keyboard--row-${rowIndex}`}>
-            {keyRow.map((key) => {
-              const isWrong = incorrectLetters.includes(key);
-              const isCorrect = correctLetters.includes(key);
-              const isDisabled =
-                hasLost || hasWon || lifes === 0 || isWrong || isCorrect;
-              let shouldShowHint = keyHint === key;
-              if (isCorrect) shouldShowHint = false;
-
-              if (key === 'Next' && lifes > 0) {
-                return (
-                  <button
-                    key={key}
-                    onClick={() => handleNextWord()}
-                    className={`hangman__key hangman__key--next-word ${
-                      isDisabled ? 'hangman__key--pulse' : ''
-                    }`}
-                  >
-                    {key}
-                  </button>
-                );
-              }
-
-              return (
-                <button
-                  onClick={() => addGuessedLetter(key)}
-                  key={key}
-                  className={`hangman__key ${
-                    isWrong ? 'hangman__key--wrong ' : ''
-                  } ${isDisabled ? 'hangman__key--no-hover' : ''} ${
-                    isCorrect ? 'hangman__key--correct' : ''
-                  } ${shouldShowHint && !hasLost ? 'hangman__key--hint' : ''}`}
-                  disabled={isDisabled}
-                >
-                  {key}
-                </button>
-              );
-            })}
-          </div>
+          <button
+            onClick={() => addGuessedLetter(key)}
+            key={key}
+            className={`hangman-keyboard__key ${
+              isWrong ? 'hangman-keyboard__key--wrong' : ''
+            } ${isDisabled ? 'hangman-keyboard__key--no-hover' : ''} ${
+              isCorrect ? 'hangman-keyboard__key--correct' : ''
+            } ${
+              shouldShowHint && !hasLost ? 'hangman-keyboard__key--hint' : ''
+            }`}
+            disabled={isDisabled}
+          >
+            {key}
+          </button>
         );
       })}
     </div>

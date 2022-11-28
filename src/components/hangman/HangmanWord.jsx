@@ -7,23 +7,25 @@ const HangmanWord = (props) => {
   const { toGuessWord } = useSelector((state) => state.hangman);
 
   return (
-    <div className='hangman__word'>
+    <div className='hangman-word'>
       {toGuessWord.split('').map((letter, index) => {
         const revealCSS = guessedLetters.includes(letter) || hasLost;
         const colorCSS = !guessedLetters.includes(letter) && hasLost;
 
         return (
-          <span key={index} className='hangman__letter--border'>
+          <span key={index} className='hangman-word__letter-box'>
             &nbsp;
             <span
               key={index}
-              className={`${
+              className={`hangman-word__letter ${
                 revealCSS
-                  ? 'hangman__letter--visible'
-                  : 'hangman__letter--hidden'
+                  ? 'hangman-word__letter--visible'
+                  : 'hangman-word__letter--hidden'
               } ${
-                colorCSS ? 'hangman__letter--red' : 'hangman__letter--black'
-              } ${hasWon ? 'hangman__letter--winner' : ''}`}
+                colorCSS
+                  ? 'hangman-word__letter--red'
+                  : 'hangman-word__letter--black'
+              } ${hasWon ? 'hangman-word__letter--winner' : ''}`}
             >
               {letter}
             </span>

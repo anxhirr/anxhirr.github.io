@@ -1,6 +1,7 @@
 .hangman {
-  padding: 10rem 0;
+  margin: 10rem 0;
   color: var(--clr-black--1);
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -10,56 +11,42 @@
     padding: 5rem 0;
     position: relative;
     width: 100%;
+    font-family: monospace;
   }
 
-  &__header {
+  &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
     width: 100%;
     max-width: 40rem;
-  }
+    &__heading {
+      font-size: 5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
 
-  &__heading {
-    font-size: 5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  &__settings {
-    &-icon {
-      &--box {
-        width: 3rem;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    &__settings {
+      &-icon {
+        &--box {
+          width: 3rem;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
 
-  &__dashboard--box {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  &__dashboard {
+  &-dashboard {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
 
-    // &--score {
-    //   &--pulse {
-    //   }
-    // }
-    // &--highest-score {
-    // }
-    // &--lifes {
-    // }
-
-    &-hint {
+    &__hint {
       padding: 0 0.3rem;
       border-radius: 0.3rem;
 
@@ -75,13 +62,13 @@
     }
   }
 
-  &__new-game-key--box {
+  &-new-game {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &__drawing {
+  &-drawing {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -91,23 +78,23 @@
       transform: translateX(-5rem);
     }
 
-    &--ground {
+    &__ground {
       width: 20rem;
       height: 1rem;
       background: var(--clr-black--1);
     }
-    &--stand {
+    &__stand {
       height: 20rem;
       width: 1rem;
       background: var(--clr-black--1);
     }
-    &--right {
+    &__right {
       width: 15rem;
       height: 1rem;
       margin-left: 14rem;
       background: var(--clr-black--1);
     }
-    &--down {
+    &__down {
       position: absolute;
       height: 3rem;
       width: 1rem;
@@ -115,7 +102,7 @@
       right: 0;
       background: var(--clr-black--1);
     }
-    &--head {
+    &__head {
       position: absolute;
       height: 4rem;
       width: 4rem;
@@ -124,7 +111,7 @@
       top: 2rem;
       right: -1.5rem;
     }
-    &--body {
+    &__body {
       position: absolute;
       height: 8rem;
       width: 1rem;
@@ -132,7 +119,7 @@
       right: 0;
       background: var(--clr-black--1);
     }
-    &--left-arm {
+    &__left-arm {
       position: absolute;
       height: 1rem;
       width: 6rem;
@@ -142,7 +129,7 @@
       rotate: 45deg;
       background: var(--clr-black--1);
     }
-    &--right-arm {
+    &__right-arm {
       position: absolute;
       height: 1rem;
       width: 6rem;
@@ -152,7 +139,7 @@
       rotate: -45deg;
       background: var(--clr-black--1);
     }
-    &--left-leg {
+    &__left-leg {
       position: absolute;
       height: 1rem;
       width: 6rem;
@@ -162,7 +149,7 @@
       rotate: -60deg;
       background: var(--clr-black--1);
     }
-    &--right-leg {
+    &__right-leg {
       position: absolute;
       height: 1rem;
       width: 6rem;
@@ -173,25 +160,21 @@
       background: var(--clr-black--1);
     }
 
-    &--shake &--down {
-      // animation: hangman-death 1s ease 2s forwards;
-    }
-
-    &--shake &--left-arm {
+    &--shake &__left-arm {
       animation: left-arm-rotate 0.2s infinite;
     }
-    &--shake &--right-arm {
+    &--shake &__right-arm {
       animation: right-arm-rotate 0.2s infinite;
     }
-    &--shake &--left-leg {
+    &--shake &__left-leg {
       animation: left-leg-rotate 0.2s infinite;
     }
-    &--shake &--right-leg {
+    &--shake &__right-leg {
       animation: right-leg-rotate 0.2s infinite;
     }
   }
 
-  &__word {
+  &-word {
     font-size: 5rem;
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
@@ -199,186 +182,113 @@
     gap: 2rem;
     text-transform: uppercase;
     font-family: monospace;
-  }
 
-  &__letter {
-    &--border {
-      flex: 1;
-      padding: 0 1rem;
-      border-bottom: 1rem solid var(--clr-black--1);
-      text-align: center;
-      position: relative;
+    &__letter {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      &-box {
+        flex: 1;
+        padding: 0 1rem;
+        border-bottom: 1rem solid var(--clr-black--1);
+        text-align: center;
+        position: relative;
 
-      @include responsive(600) {
-        padding: 0;
+        @include responsive(600) {
+          padding: 0;
+        }
       }
 
-      & > span {
-        position: absolute;
-        right: 50%;
-        transform: translateX(50%);
+      &--hidden {
+        visibility: hidden;
+        opacity: 0;
+        top: 10rem;
       }
-    }
+      &--visible {
+        animation: slide-up 0.5s ease forwards;
+      }
+      &--red {
+        color: var(--clr-red--strong);
+      }
+      &--black {
+        color: var(--clr-black--1);
+      }
 
-    &--hidden {
-      visibility: hidden;
-      opacity: 0;
-      top: 10rem;
-    }
-    &--visible {
-      animation: slide-up 0.5s ease forwards;
-    }
-    &--red {
-      color: var(--clr-red--strong);
-    }
-    &--black {
-      color: var(--clr-black--1);
-    }
-
-    &--winner {
-      color: var(--clr-green);
+      &--winner {
+        color: var(--clr-green);
+      }
     }
   }
 
-  &__keyboard {
+  &-keyboard {
     max-width: 85rem;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
     gap: 0.65rem;
     width: 100%;
     margin-top: 2rem;
 
-    [class*='--row-'] {
-      gap: 0.65rem;
+    &__key {
+      grid-column: span 2;
+      font-size: 1.8rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-transform: uppercase;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      box-shadow: var(--box-shadow-keyboard);
+      background: var(--clr-white-2);
+      border-radius: 0.8rem;
+      animation: keyboard-zoom-out 1s forwards;
+
       display: flex;
-      justify-content: stretch;
-    }
-  }
-
-  &__key {
-    font-size: 1.8rem;
-    font-weight: 600;
-    font-family: monospace;
-    text-transform: uppercase;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    box-shadow: var(--box-shadow-keyboard);
-    background: var(--clr-white-2);
-    border-radius: 0.8rem;
-    animation: keyboard-zoom-out 1s forwards;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    @include responsive(600) {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    &:hover:not(&--wrong, &--correct, &--no-hover) {
-      animation: keyboard-zoom-in 0.5s forwards;
-    }
-
-    &--no-hover {
-      cursor: default;
-    }
-
-    &--wrong {
-      cursor: default;
-      background: var(--clr-blue--1);
-      color: var(--clr-white);
-    }
-    &--correct {
-      background: var(--clr-green);
-      color: var(--clr-white);
-    }
-
-    &--hint {
-      animation: keyboard-pulse 0.5s infinite;
-    }
-
-    &--next-word,
-    &--new-game {
-      background-color: #fff;
-    }
-
-    &--new-game {
-      flex-grow: 0;
-      padding: 2rem 3rem;
-    }
-    &--pulse {
-      animation: keyboard-pulse 0.5s infinite;
-    }
-  }
-
-  &__modal--box {
-    @include absCenter;
-    position: fixed;
-    background-color: #fff;
-    border-radius: 1.5rem;
-    z-index: 1000;
-    max-width: 40rem;
-    width: 100%;
-  }
-  &__modal {
-    color: var(--clr-black--1);
-    padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-
-    &--keys {
-      display: flex;
-      gap: 2rem;
-    }
-  }
-
-  &__settings {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-
-    &-head {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 3rem;
-      font-size: 2.5rem;
-    }
-    &-box {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      justify-content: center;
+      flex-grow: 1;
 
-      & li {
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.9rem;
-        cursor: pointer;
-        padding: 2rem 2rem 4rem 2rem;
-        background-color: var(--clr-white-2);
-        border-radius: 1rem;
-        position: relative;
-        box-shadow: var(--box-shadow-keyboard);
+      @include responsive(600) {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      &:hover:not(&--wrong, &--correct, &--no-hover) {
+        animation: keyboard-zoom-in 0.5s forwards;
+      }
+
+      &--no-hover {
+        cursor: default;
+      }
+
+      &--wrong {
+        cursor: default;
+        background: var(--clr-blue--1);
+        color: var(--clr-white);
+      }
+      &--correct {
+        background: var(--clr-green);
+        color: var(--clr-white);
+      }
+
+      &--hint {
+        animation: keyboard-pulse 0.5s infinite;
+      }
+
+      &--next-word,
+      &--new-game {
+        background-color: #fff;
+      }
+
+      &--next-word {
+        grid-column: span 4;
+      }
+
+      &--new-game {
+        flex-grow: 0;
+        padding: 2rem 3rem;
+      }
+      &--pulse {
+        animation: keyboard-pulse 0.5s infinite;
       }
     }
-
-    &--details {
-      position: absolute;
-      font-size: 1.5rem;
-      top: 4.5rem;
-      left: 2rem;
-    }
-
-    // &--theme {
-    // }
-    // &--language {
-    // }
-    // &--auth {
-    // }
   }
 }
