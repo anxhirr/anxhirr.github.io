@@ -4,21 +4,20 @@ import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { hangmanActions } from '../../../store/Hangman-slice';
 import Overlay from '../../overlay/Overlay';
 
-const WinLosePopUp = ({ hasLost, hasWon, startNewGame }) => {
+const WinLosePopUp = ({ hasLost, startNewGame }) => {
   const dispatch = useDispatch();
   const onClickOutside = useRef();
   const { score } = useSelector((state) => state.hangman);
 
   useOnClickOutside(onClickOutside, () => {
-    dispatch(hangmanActions.setShowWinLoseModal(false));
+    dispatch(hangmanActions.setShowConfirmModal(false));
   });
 
   const handleConfirmBtn = (e) => {
     const btnText = e.target.innerText;
-    dispatch(hangmanActions.setShowWinLoseModal(false));
+    dispatch(hangmanActions.setShowConfirmModal(false));
 
     if (btnText === 'YES') {
-      console.log('yes');
       startNewGame();
     }
   };

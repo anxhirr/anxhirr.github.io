@@ -30,7 +30,6 @@
     @include responsive(600) {
       opacity: 0;
       width: 0;
-      pointer-events: none;
     }
 
     &:hover {
@@ -54,24 +53,26 @@
     z-index: 999;
 
     &--checked .nav__background {
-      transform: scale(200);
-      height: 1rem;
-      width: 1rem;
+      scale: 200;
+      opacity: 1;
     }
 
     @include responsive(600) {
       display: block;
+      position: relative;
     }
   }
 
   &__background {
     position: fixed;
-    top: 3.3rem;
-    right: 3.3rem;
+    opacity: 0;
+    width: 1rem;
+    height: 1rem;
+    top: 4.3rem;
+    right: 4.8rem;
     background-color: var(--clr-blue--2);
     border-radius: 50%;
     z-index: -1;
     transition: all 0.5s;
-    pointer-events: none;
   }
 }

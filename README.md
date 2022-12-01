@@ -1,7 +1,7 @@
 # My Portfolio
 
 Nothing Special,
-just a Webpage built with React adn Sass
+just a Webpage built with React and Sass
 
 # Contents
 

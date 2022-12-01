@@ -13,10 +13,10 @@ const initialState = {
   guessedLetters: [],
   score: 0,
   lifes: LIFES,
-  highestScore: 0,
+  highestScore: JSON.parse(localStorage.getItem('hangman-highest-score')) ?? 0,
   remainingTime: TIME__LIMIT,
   keyHint: null,
-  showWinLoseModal: false,
+  showConfirmModal: false,
   showSettingOptionsModal: false,
 };
 
@@ -47,6 +47,10 @@ const hangmanSlice = createSlice({
     },
     setHighestScore: (state, action) => {
       state.highestScore = action.payload;
+      localStorage.setItem(
+        'hangman-highest-score',
+        JSON.stringify(action.payload)
+      );
     },
     decreaseRemainingTime: (state) => {
       state.remainingTime -= 1;
@@ -60,8 +64,8 @@ const hangmanSlice = createSlice({
     resetKeyHint: (state) => {
       state.keyHint = null;
     },
-    setShowWinLoseModal: (state, action) => {
-      state.showWinLoseModal = action.payload;
+    setShowConfirmModal: (state, action) => {
+      state.showConfirmModal = action.payload;
     },
     setShowSettingOptionsModal: (state, action) => {
       state.showSettingOptionsModal = action.payload;

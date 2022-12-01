@@ -6,7 +6,7 @@ import HangManDashboard from './dashboard/HangManDashboard';
 import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
 import HangmanKeyboard from './HangmanKeyboard';
-import WinLosePopUp from './modal/ConfirmModal';
+import ConfirmModal from './modal/ConfirmModal';
 import { PARTS } from './HangmanDrawing';
 import HangmanSettings from './HangmanSettings';
 import HangmanNewGameBtn from './HangmanNewGameBtn';
@@ -20,7 +20,7 @@ const Hangman = () => {
   const { score } = useSelector((state) => state.hangman);
   const { highestScore } = useSelector((state) => state.hangman);
   const { lifes } = useSelector((state) => state.hangman);
-  const { showWinLoseModal } = useSelector((state) => state.hangman);
+  const { showConfirmModal } = useSelector((state) => state.hangman);
   const { keyHint } = useSelector((state) => state.hangman);
 
   const incorrectLetters = guessedLetters.filter(
@@ -48,24 +48,26 @@ const Hangman = () => {
   }, [dispatch, highestScore, score, update]);
 
   useEffect(() => {
-    if (lifes === 0) dispatch(hangmanActions.setShowWinLoseModal(true));
+    if (lifes === 0) dispatch(hangmanActions.setShowConfirmModal(true));
   }, [dispatch, lifes]);
 
   return (
     <section className='hangman'>
       <div className='hangman__content'>
-        {showWinLoseModal && (
-          <WinLosePopUp
+        {showConfirmModal && (
+          <ConfirmModal
             startNewGame={startNewGame}
             hasLost={hasLost}
             hasWon={hasWon}
           />
         )}
         <HangmanSettings />
-        <HangManDashboard hasLost={hasLost} />
-
+        <HangManDashboard
+          hasWon={hasWon}
+          highestScore={highestScore}
+          hasLost={hasLost}
+        />
         <HangmanNewGameBtn hasLost={hasLost} startNewGame={startNewGame} />
-
         <HangmanDrawing hasLost={hasLost} incorrectLetters={incorrectLetters} />
         <HangmanWord
           hasLost={hasLost}
@@ -79,7 +81,6 @@ const Hangman = () => {
           correctLetters={correctLetters}
           keyHint={keyHint}
           lifes={lifes}
-          update={update}
         />
       </div>
     </section>

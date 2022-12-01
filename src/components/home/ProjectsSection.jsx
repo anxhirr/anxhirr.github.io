@@ -47,9 +47,9 @@ const ProjectsSection = () => {
             </span>
             <h5 className='project__title'>Hangman</h5>
             <p>
-              Every website should be built with 2 primary goals: Firstly, it
-              needs to work across all devices. Secondly, it needs to be as fast
-              as possible
+              A simple hangman game built with React. The user can guess a word
+              by clicking on the letters of the alphabet or by typing the letter
+              on the keyboard and pressing enter.
             </p>
             <Link to='hangman-game' className='btn btn--purple'>
               Learn more

@@ -158,10 +158,12 @@
     background-color: var(--clr-black--1);
     padding: 10rem 5rem;
     border-radius: 2rem;
+    width: 100%;
 
     @include responsive(400) {
       padding-left: 0;
       padding-right: 0;
+      border-radius: 0;
     }
   }
 
@@ -187,6 +189,10 @@
     padding: 3rem;
     background-color: var(--clr-black--2);
     height: 100%;
+
+    @include responsive(400) {
+      border-radius: 0;
+    }
   }
 }
 

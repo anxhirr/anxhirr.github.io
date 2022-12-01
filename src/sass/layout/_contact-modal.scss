@@ -2,8 +2,8 @@
   @include absCenter;
   position: fixed;
   z-index: 100;
-  width: 50rem;
-  height: 40rem;
+  // width: 50rem;
+  // height: 40rem;
   border-radius: 2rem;
   background-color: var(--clr-white-2);
   color: var(--clr-black--1);
@@ -29,5 +29,8 @@
 
   &__title {
     font-size: 3.5rem;
+  }
+
+  &__form {
   }
 }

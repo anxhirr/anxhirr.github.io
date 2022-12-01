@@ -1,8 +1,7 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import HangmanTime from './HangmanTime';
 
-const HangManDashboard = ({ hasLost }) => {
+const HangManDashboard = ({ hasLost, hasWon }) => {
   const { score } = useSelector((state) => state.hangman);
   const { lifes } = useSelector((state) => state.hangman);
   const { highestScore } = useSelector((state) => state.hangman);
@@ -22,7 +21,7 @@ const HangManDashboard = ({ hasLost }) => {
         <span>{lifes}</span>
       </div>
 
-      <HangmanTime hasLost={hasLost} />
+      <HangmanTime hasWon={hasWon} hasLost={hasLost} />
     </div>
   );
 };

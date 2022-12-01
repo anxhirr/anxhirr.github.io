@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hangmanActions } from '../../../store/Hangman-slice';
 
-const HangmanTime = ({ hasLost }) => {
+const HangmanTime = ({ hasLost, hasWon }) => {
   const dispatch = useDispatch();
   const { remainingTime } = useSelector((state) => state.hangman);
   const { lifes } = useSelector((state) => state.hangman);
@@ -10,9 +10,9 @@ const HangmanTime = ({ hasLost }) => {
   const { guessedLetters } = useSelector((state) => state.hangman);
 
   let shouldPulse = remainingTime <= 3;
-  if (remainingTime === 0 || hasLost) shouldPulse = false;
+  if (remainingTime === 0 || hasLost || hasWon) shouldPulse = false;
 
-  const shouldHide = remainingTime === 0 || lifes === 0;
+  const shouldHide = remainingTime === 0 || lifes === 0 || hasWon;
 
   const handleTimeOut = useCallback(() => {
     if (lifes === 0) return;
@@ -27,7 +27,7 @@ const HangmanTime = ({ hasLost }) => {
   }, [dispatch, guessedLetters, lifes, toGuessWord]);
 
   useEffect(() => {
-    if (hasLost) return;
+    if (hasLost || hasWon) return;
     if (remainingTime === 0) {
       return handleTimeOut();
     }

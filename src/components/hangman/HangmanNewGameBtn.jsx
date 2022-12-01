@@ -9,7 +9,7 @@ const HangmanNewGameBtn = ({ hasLost, startNewGame }) => {
 
   const handleNewGame = () => {
     if (score > 0 && !hasLost) {
-      return dispatch(hangmanActions.setShowModal(true));
+      return dispatch(hangmanActions.setShowConfirmModal(true));
     }
     startNewGame();
   };
