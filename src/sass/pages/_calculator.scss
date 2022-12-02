@@ -1,0 +1,85 @@
+.calculator {
+  min-height: 100vh;
+
+  &__content {
+    max-width: 50rem;
+    width: fit-content;
+    font-size: 3rem;
+    background-color: #fff;
+    // display: grid;
+    // // grid-template-areas:
+    // //   'output output output output'
+    // //   'clear delete percentage substract'
+    // //   'nr nr nr times'
+    // //   'nr nr nr  minus'
+    // //   'nr nr nr  plus'
+    // //   'nr nr nr equal';
+    // grid-template-columns: repeat(4, 10rem);
+    // grid-template-rows: repeat(4, 10rem) minmax(10rem, auto);
+  }
+
+  &__output {
+    // grid-area: output;
+  }
+
+  &__keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 10rem);
+    grid-template-rows: repeat(4, 10rem) minmax(10rem, auto);
+  }
+
+  &__operation {
+    background-color: #fff;
+    // &--clear {
+    //   grid-area: clear;
+    // }
+    // &--delete {
+    //   grid-area: delete;
+    // }
+    // &--percentage {
+    //   grid-area: percentage;
+    // }
+    // &--substract {
+    //   grid-area: substract;
+    // }
+    // &--times {
+    //   grid-area: times;
+    // }
+    // &--minus {
+    //   grid-area: minus;
+    // }
+    // &--plus {
+    //   grid-area: plus;
+    // }
+    // &--equal {
+    //   grid-area: equal;
+    // }
+  }
+
+  &__numbers {
+    grid-column: 1/-2;
+    grid-row: 3/-2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__btn {
+    background-color: #fff;
+
+    &:hover {
+      background-color: var(--clr-blue--2);
+    }
+  }
+
+  &__output {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    & input {
+      height: 50%;
+    }
+  }
+}

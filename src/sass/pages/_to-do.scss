@@ -1,18 +1,28 @@
 .todo {
   background-color: var(--clr-black--2);
-  height: calc(100vh - var(--nav-height));
+  min-height: calc(100vh - var(--nav-height));
 
   &__content {
     padding: 10rem 0;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   &__add {
     gap: 1.5rem;
+
+    @include responsive(400) {
+      flex-direction: column;
+      flex-grow: 1;
+    }
   }
 
   &__input--box {
     max-width: 50rem;
     flex-grow: 1;
+    width: 100%;
   }
 
   &__input {
@@ -30,23 +40,31 @@
     }
   }
 
-  &__list {
-  }
+  // &__list {
+  // }
 
   &__item {
     max-width: 70rem;
     margin-inline: auto;
 
-    &--input {
-      // background-color: transparent;
-      // color: var(--clr-white);
-      // border: none;
-    }
+    // &-input {
+    //   background-color: transparent;
+    //   color: var(--clr-white);
+    //   border: none;
+    // }
   }
 
   &__item--btns-box {
-    & button:not(:last-child) {
-      margin-right: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    @include responsive(600) {
+      grid-template-columns: 1fr;
+    }
+
+    & button {
+      width: 100%;
     }
   }
 }

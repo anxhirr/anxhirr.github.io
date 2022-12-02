@@ -1,45 +1,49 @@
-import React, { useState } from 'react';
-import ToDoItems from './ToDoItems';
+import React, { useRef, useState } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import ToDoItem from './ToDoItem';
 
 const ToDo = () => {
-  const [todoItems, setTodoItems] = useState([]);
-  const [input, setInput] = useState('');
+  // const [todoItems, setTodoItems] = useState([]);
+  const [todoItems, setTodoItems] = useLocalStorage('todo', []);
+  const [addTodoInput, setAddTodoInput] = useState('');
 
   const hasItemsToDo = !!todoItems.length;
 
-  const handleAdd = () => {
-    if (!input) return alert('provide some text');
+  const handleSubit = (e) => {
+    e.preventDefault();
+    if (!addTodoInput) return alert('provide some text');
 
     setTodoItems((prevItems) => {
-      return [...prevItems, input];
+      return [...prevItems, { name: addTodoInput, edit: false }];
     });
-    setInput('');
+    setAddTodoInput('');
   };
 
   return (
     <section className='todo'>
       <div className='todo__content container'>
-        <h1 className='heading--primary u-margin-b--small'>
-          Simple To-Do List
-        </h1>
-        <div className='todo__add flex-r-center u-margin-b--small'>
+        <h1 className='heading--primary '>Simple To-Do List</h1>
+        <form onSubmit={handleSubit} className='todo__add flex-r-center '>
           <div className='todo__input--box'>
             <input
-              onChange={(e) => setInput(e.target.value)}
-              value={input}
+              onChange={(e) => setAddTodoInput(e.target.value)}
+              value={addTodoInput}
               className='todo__input'
               placeholder='New Plans? Write them here..'
             />
           </div>
-          <button onClick={handleAdd} className='btn btn--purple'>
+          <button type='submit' className='btn btn--purple'>
             Add Task
           </button>
-        </div>
+        </form>
         {hasItemsToDo && (
-          <h2 className='heading--secondary  u-margin-b--small'>To-Do Tasks</h2>
+          <div>
+            <h2 className='heading--secondary  '>To-Do Tasks:</h2>
+          </div>
         )}
+
         <ul className='todo__list'>
-          <ToDoItems todoItems={todoItems} setTodoItems={setTodoItems} />
+          <ToDoItem todoItems={todoItems} setTodoItems={setTodoItems} />
         </ul>
       </div>
     </section>

@@ -168,10 +168,11 @@
   }
 
   &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
 
     @include responsive(1200) {
-      display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8rem;
     }
@@ -209,6 +210,10 @@
       display: block;
       border-bottom: 3px solid var(--clr-purple);
     }
+  }
+
+  &__description {
+    flex-grow: 1;
   }
 }
 

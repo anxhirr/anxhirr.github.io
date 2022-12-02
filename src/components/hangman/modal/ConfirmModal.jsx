@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { hangmanActions } from '../../../store/Hangman-slice';
-import Overlay from '../../overlay/Overlay';
+import Overlay from '../../../overlay/Overlay';
 
 const WinLosePopUp = ({ hasLost, startNewGame }) => {
   const dispatch = useDispatch();

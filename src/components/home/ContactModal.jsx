@@ -1,5 +1,5 @@
 import React from 'react';
-import Overlay from '../overlay/Overlay';
+import Overlay from '../../overlay/Overlay';
 
 const ContactModal = ({ setContact }) => {
   const handleClose = () => {

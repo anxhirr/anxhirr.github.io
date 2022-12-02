@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ToDoPage from './pages/ToDoPage';
 import MemoryPage from './pages/MemoryPage';
 import HangmanPage from './pages/HangmanPage';
+import Calculator from './components/calculator/Calculator';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/to-do' element={<ToDoPage />} />
         <Route path='/card-memory-game' element={<MemoryPage />} />
         <Route path='/hangman-game' element={<HangmanPage />} />
+        <Route path='/calculator' element={<Calculator />} />
       </Routes>
       <Footer />
     </>

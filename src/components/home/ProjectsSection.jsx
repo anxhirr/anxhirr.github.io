@@ -12,27 +12,13 @@ const ProjectsSection = () => {
         <div className='u-margin-b--small txt-c'>
           <h2 className='heading--secondary '>My Projects</h2>
         </div>
-        <ul className='projects__list flex-r-center'>
-          <li className='projects__item flex-col-center'>
-            <span className='project__icon-box'>
-              <AiFillBank />
-            </span>
-
-            <h5 className='project__title '>Bankist</h5>
-            <p>
-              Coming Soon... Bankist is a minimalist online banking application
-              that allows the user to do very mininmal bank operations
-            </p>
-            <Link href='' className='btn btn--purple'>
-              Learn more
-            </Link>
-          </li>
+        <ul className='projects__list '>
           <li className='projects__item flex-col-center'>
             <span className='project__icon-box'>
               <FcTodoList />
             </span>
             <h5 className='project__title'>ToDo</h5>
-            <p>
+            <p className='project__description'>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast
               as possible
@@ -46,7 +32,7 @@ const ProjectsSection = () => {
               <TiWeatherStormy />
             </span>
             <h5 className='project__title'>Hangman</h5>
-            <p>
+            <p className='project__description'>
               A simple hangman game built with React. The user can guess a word
               by clicking on the letters of the alphabet or by typing the letter
               on the keyboard and pressing enter.
@@ -60,12 +46,26 @@ const ProjectsSection = () => {
               <BiMemoryCard />
             </span>
             <h5 className='project__title'>Memory Game</h5>
-            <p>
+            <p className='project__description'>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast
               as possible
             </p>
             <Link to='/card-memory-game' className='btn btn--purple'>
+              Learn more
+            </Link>
+          </li>
+          <li className='projects__item flex-col-center'>
+            <span className='project__icon-box'>
+              <AiFillBank />
+            </span>
+
+            <h5 className='project__title '>Calculator</h5>
+            <p className='project__description'>
+              Calculator is a minimalist mathematic application that allows the
+              user to do very mininmal math operations
+            </p>
+            <Link to='calculator' className='btn btn--purple'>
               Learn more
             </Link>
           </li>

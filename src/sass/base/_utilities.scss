@@ -29,6 +29,12 @@
   justify-content: center;
   align-items: center;
 }
+.flex-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
 
 .u-margin-b--tiny {
   margin-bottom: 2.5rem;
@@ -44,4 +50,7 @@
 }
 .u-margin-t--tiny {
   margin-top: 2.55rem;
+}
+.u-margin-l--tiny {
+  margin-left: 2.55rem;
 }
