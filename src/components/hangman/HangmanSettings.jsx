@@ -2,7 +2,7 @@ import React from 'react';
 import { FiSettings } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { hangmanActions } from '../../store/Hangman-slice';
-import SettingOptionsPopUp from './modal/SettingOptionsModal';
+import SettingOptionsModal from './modal/SettingOptionsModal';
 
 const HangmanSettings = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const HangmanSettings = () => {
 
   return (
     <>
-      {showSettingOptionsModal && <SettingOptionsPopUp />}
+      {showSettingOptionsModal && <SettingOptionsModal />}
       <div className='hangman-header'>
         <div className='hangman-header__heading'>Hangman</div>
         <span

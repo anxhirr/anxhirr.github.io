@@ -26,7 +26,7 @@ const BUTTONS = [
 
 const Calculator = () => {
   const [result, setResult] = useState('');
-  const [numberValue, setNumberValue] = useState('');
+  // const [numberValue, setNumberValue] = useState('');
   const [array, setArray] = useState([]);
 
   const handleClick = (btn) => {
@@ -81,7 +81,7 @@ const Calculator = () => {
     }
     if (btn.text === '=') {
       console.log(array);
-      setResult(eval(numberValue));
+      // setResult(eval(numberValue));
     }
     if (btn.text === 'DEL') {
       // setNumberValue((prev) => prev.slice(0, prev.length - 1));
@@ -96,7 +96,7 @@ const Calculator = () => {
       <div className='calculator__content container'>
         <div className='calculator__output'>
           <input readOnly value={result ?? 0} />
-          <input readOnly value={numberValue} />
+          {/* <input readOnly value={numberValue} /> */}
         </div>
         <div className='calculator__keypad'>
           {BUTTONS.map((btn) => {

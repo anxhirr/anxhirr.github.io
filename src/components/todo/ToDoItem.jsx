@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 const ToDoItem = ({ todoItems, setTodoItems }) => {
   const [edittedName, setEdittedName] = useState('');
@@ -33,8 +33,6 @@ const ToDoItem = ({ todoItems, setTodoItems }) => {
   const handleInput = (e) => {
     setEdittedName(e.target.value);
   };
-
-  const maxLen = 35;
 
   return todoItems.map((item, itemIndex) => {
     return (

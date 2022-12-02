@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import ToDoItem from './ToDoItem';
 
 const ToDo = () => {
-  // const [todoItems, setTodoItems] = useState([]);
   const [todoItems, setTodoItems] = useLocalStorage('todo', []);
   const [addTodoInput, setAddTodoInput] = useState('');
 

@@ -77,19 +77,21 @@
 
   &__dropdown {
     position: absolute;
-    width: 0;
     opacity: 0;
+    visibility: hidden;
+    transform: translateY(-2rem);
+    transition: all 0.3s ease-in-out;
+
+    width: 100%;
     background-color: hsl(220, 0%, 95%);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding-top: 1rem;
-    border-radius: 1rem;
+    border-radius: 0 0 1rem 1rem;
 
     &--visible {
-      width: 95%;
-      margin-inline: auto;
-      top: -1rem;
       position: relative;
       opacity: 1;
+      visibility: visible;
+      transform: translateY(0%);
     }
 
     &-list {

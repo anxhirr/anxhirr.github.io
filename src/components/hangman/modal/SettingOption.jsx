@@ -3,7 +3,7 @@ import { AiOutlineArrowDown, AiOutlineArrowRight } from 'react-icons/ai';
 import { CgOptions } from 'react-icons/cg';
 
 const SettingOption = ({ option, setSettingOptions }) => {
-  const handleOptionClick = (optionId) => {
+  const showHideOptionDropDown = (optionId) => {
     setSettingOptions((prevOptions) =>
       prevOptions.map((option) =>
         option.id === optionId
@@ -12,18 +12,35 @@ const SettingOption = ({ option, setSettingOptions }) => {
       )
     );
   };
+
+  const handleOptionSelect = (option, dropdownOption) => {
+    const toCloseOptionId = option.id;
+
+    showHideOptionDropDown(toCloseOptionId);
+
+    setSettingOptions((prevOptions) => {
+      return prevOptions.map((option) =>
+        option.id === toCloseOptionId
+          ? { ...option, selectedOption: dropdownOption }
+          : option
+      );
+    });
+  };
   return (
-    <div key={option.id} className='hangman-settings-modal__option-box'>
+    <div className='hangman-settings-modal__option-box '>
       <button
-        onClick={() => handleOptionClick(option.id)}
+        onClick={() => showHideOptionDropDown(option.id)}
         className='hangman-settings-modal__btn'
+        style={{ borderRadius: option.showDropDown ? '1rem 1rem 0 0' : '' }}
       >
         <span className='hangman-settings-modal__option-icon'>
           <CgOptions />
         </span>
         <div className='hangman-settings-modal__option u-margin-l--tiny'>
           <p className='hangman-settings-modal__option-name'>{option.name}</p>
-          <span className='hangman-settings-modal__option-detail'>English</span>
+          <span className='hangman-settings-modal__option-detail'>
+            {option.selectedOption}
+          </span>
         </div>
         <span className='hangman-settings-modal__option-arrow--box'>
           {option.showDropDown ? (
@@ -38,11 +55,15 @@ const SettingOption = ({ option, setSettingOptions }) => {
           option.showDropDown ? 'hangman-settings-modal__dropdown--visible' : ''
         }`}
       >
-        <ul className='hangman-settings-modal__dropdown-list flex-col-left'>
-          {option.options.map((option, index) => {
+        <ul className='hangman-settings-modal__dropdown-list '>
+          {option.dropdownOptions.map((dropdownOption, index) => {
             return (
-              <li key={index} className='hangman-settings-modal__dropdown-item'>
-                {option}
+              <li
+                onClick={(e) => handleOptionSelect(option, dropdownOption)}
+                key={index}
+                className='hangman-settings-modal__dropdown-item'
+              >
+                {dropdownOption}
               </li>
             );
           })}

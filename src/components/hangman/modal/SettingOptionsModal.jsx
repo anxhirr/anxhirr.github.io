@@ -7,14 +7,27 @@ import Overlay from '../../../overlay/Overlay';
 import SettingOption from './SettingOption';
 
 const SETTING_OPTIONS = [
-  { name: 'Theme', id: 1, options: ['Dark', 'Light'], showDropDown: false },
+  {
+    name: 'Theme',
+    id: 1,
+    dropdownOptions: ['Dark', 'Light'],
+    selectedOption: 'default light',
+    showDropDown: false,
+  },
   {
     name: 'Language',
     id: 2,
-    options: ['English', 'Albanian'],
+    dropdownOptions: ['English', 'Albanian'],
+    selectedOption: 'default english',
     showDropDown: false,
   },
-  { name: 'Difficulty', id: 3, options: ['Easy', 'Hard'], showDropDown: false },
+  {
+    name: 'Difficulty',
+    id: 3,
+    dropdownOptions: ['Easy', 'Hard'],
+    selectedOption: 'default easy',
+    showDropDown: false,
+  },
 ];
 
 const SettingOptionsPopUp = () => {
@@ -46,6 +59,7 @@ const SettingOptionsPopUp = () => {
           {settingOptions.map((option) => {
             return (
               <SettingOption
+                key={option.id}
                 option={option}
                 setSettingOptions={setSettingOptions}
               />

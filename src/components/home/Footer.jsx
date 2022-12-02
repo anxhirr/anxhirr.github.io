@@ -14,18 +14,27 @@ const Footer = () => {
           <li className='footer__social-item'>
             <a
               target='_blank'
+              rel='noreferrer'
               href='https://al.linkedin.com/in/anxhi-rroshi-129684165'
             >
               <AiFillLinkedin />
             </a>
           </li>
           <li className='footer__social-item'>
-            <a target='_blank' href='https://github.com/anxhirr'>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              href='https://github.com/anxhirr'
+            >
               <AiFillGithub />
             </a>
           </li>
           <li className='footer__social-item'>
-            <a target='_blank' href='https://www.instagram.com/anxhiirr/'>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              href='https://www.instagram.com/anxhiirr/'
+            >
               <AiFillInstagram />
             </a>
           </li>
