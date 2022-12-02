@@ -5,11 +5,12 @@ import { CgOptions } from 'react-icons/cg';
 const SettingOption = ({ option, setSettingOptions }) => {
   const showHideOptionDropDown = (optionId) => {
     setSettingOptions((prevOptions) =>
-      prevOptions.map((option) =>
-        option.id === optionId
-          ? { ...option, showDropDown: !option.showDropDown }
-          : option
-      )
+      prevOptions.map((option) => {
+        if (option.id === optionId) {
+          return { ...option, showDropDown: !option.showDropDown };
+        }
+        return { ...option, showDropDown: false };
+      })
     );
   };
 
@@ -34,7 +35,7 @@ const SettingOption = ({ option, setSettingOptions }) => {
         style={{ borderRadius: option.showDropDown ? '1rem 1rem 0 0' : '' }}
       >
         <span className='hangman-settings-modal__option-icon'>
-          <CgOptions />
+          {option.icon}
         </span>
         <div className='hangman-settings-modal__option u-margin-l--tiny'>
           <p className='hangman-settings-modal__option-name'>{option.name}</p>

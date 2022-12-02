@@ -18,6 +18,9 @@
   flex-direction: column;
   gap: 4rem;
 
+  height: 90vh;
+  overflow-y: auto;
+
   &__head {
     display: flex;
     justify-content: space-between;
@@ -31,6 +34,19 @@
     width: 4rem;
     padding: 0.1rem;
     border-radius: 2rem;
+  }
+
+  &__search-login--box {
+    margin-top: auto;
+    gap: 2rem;
+  }
+
+  &__search {
+    padding: 0.5rem 1rem;
+  }
+
+  &__login {
+    padding: 0 5rem;
   }
 
   &__btn {
