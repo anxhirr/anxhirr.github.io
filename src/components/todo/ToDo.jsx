@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import ToDoItem from './ToDoItem';
+import React, { useState } from 'react'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import ToDoItem from './ToDoItem'
 
 const ToDo = () => {
-  const [todoItems, setTodoItems] = useLocalStorage('todo', []);
-  const [addTodoInput, setAddTodoInput] = useState('');
+  const [todoItems, setTodoItems] = useLocalStorage('todo', [])
+  const [addTodoInput, setAddTodoInput] = useState('')
 
-  const hasItemsToDo = !!todoItems.length;
+  const hasItemsToDo = !!todoItems.length
 
   const handleSubit = (e) => {
-    e.preventDefault();
-    if (!addTodoInput) return alert('provide some text');
+    e.preventDefault()
+    if (!addTodoInput) return alert('provide some text')
 
     setTodoItems((prevItems) => {
-      return [...prevItems, { name: addTodoInput, edit: false }];
-    });
-    setAddTodoInput('');
-  };
+      return [...prevItems, { name: addTodoInput, edit: false }]
+    })
+    setAddTodoInput('')
+  }
 
   return (
     <section className='todo'>
@@ -46,7 +46,7 @@ const ToDo = () => {
         </ul>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ToDo;
+export default ToDo

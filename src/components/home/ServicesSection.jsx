@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ServicesSection = () => {
   return (
@@ -37,7 +37,7 @@ const ServicesSection = () => {
       </div>
       <Link className='btn btn--purple'>My Work</Link>
     </section>
-  );
-};
+  )
+}
 
-export default ServicesSection;
+export default ServicesSection

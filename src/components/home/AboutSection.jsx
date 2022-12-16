@@ -1,5 +1,5 @@
-import React from 'react';
-import aboutimg from '../../assets/images/me-2.jpg';
+import React from 'react'
+import aboutimg from '../../assets/images/me-2.jpg'
 
 const AboutSection = () => {
   return (
@@ -27,7 +27,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AboutSection;
+export default AboutSection

@@ -1,16 +1,13 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react'
 
 const HangmanWord = (props) => {
-  const { guessedLetters, hasLost, hasWon } = props;
-
-  const { toGuessWord } = useSelector((state) => state.hangman);
+  const { guessedLetters, hasLost, hasWon, toGuessWord } = props
 
   return (
     <div className='hangman-word'>
       {toGuessWord.split('').map((letter, index) => {
-        const revealCSS = guessedLetters.includes(letter) || hasLost;
-        const colorCSS = !guessedLetters.includes(letter) && hasLost;
+        const revealCSS = guessedLetters.includes(letter) || hasLost
+        const colorCSS = !guessedLetters.includes(letter) && hasLost
 
         return (
           <span key={index} className='hangman-word__letter-box'>
@@ -30,10 +27,10 @@ const HangmanWord = (props) => {
               {letter}
             </span>
           </span>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default HangmanWord;
+export default HangmanWord

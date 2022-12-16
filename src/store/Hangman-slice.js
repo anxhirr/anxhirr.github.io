@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import WordList from './data/WordList';
+import { createSlice } from '@reduxjs/toolkit'
+import WordList from './data/WordList'
 
-const TIME__LIMIT = 15;
-const LIFES = 4;
+const TIME__LIMIT = 15
+const LIFES = 4
 
 const getNewWord = () => {
-  return WordList[Math.floor(Math.random() * WordList.length)];
-};
+  return WordList[Math.floor(Math.random() * WordList.length)]
+}
 
 const initialState = {
   toGuessWord: getNewWord(),
@@ -18,60 +18,71 @@ const initialState = {
   keyHint: null,
   showConfirmModal: false,
   showSettingOptionsModal: false,
-};
+
+  isLogged: false,
+  signInUserName: '',
+}
 
 const hangmanSlice = createSlice({
   name: 'hangman',
   initialState,
   reducers: {
     updateToGuessWord: (state) => {
-      state.toGuessWord = getNewWord();
+      state.toGuessWord = getNewWord()
     },
     addGuessedLetter: (state, action) => {
-      state.guessedLetters.push(action.payload);
+      state.guessedLetters.push(action.payload)
     },
     resetGuessedLetters: (state) => {
-      state.guessedLetters = [];
+      state.guessedLetters = []
     },
     addScore: (state) => {
-      state.score += 1;
+      state.score += 1
     },
     resetScore: (state) => {
-      state.score = 0;
+      state.score = 0
     },
     decreaseLife: (state) => {
-      state.lifes -= 1;
+      state.lifes -= 1
     },
     resetLifes: (state) => {
-      state.lifes = LIFES;
+      state.lifes = LIFES
     },
     setHighestScore: (state, action) => {
-      state.highestScore = action.payload;
+      state.highestScore = action.payload
       localStorage.setItem(
         'hangman-highest-score',
         JSON.stringify(action.payload)
-      );
+      )
     },
     decreaseRemainingTime: (state) => {
-      state.remainingTime -= 1;
+      state.remainingTime -= 1
     },
     resetRemainingTime: (state) => {
-      state.remainingTime = TIME__LIMIT;
+      state.remainingTime = TIME__LIMIT
     },
     setKeyHint: (state, action) => {
-      state.keyHint = action.payload;
+      state.keyHint = action.payload
     },
     resetKeyHint: (state) => {
-      state.keyHint = null;
+      state.keyHint = null
     },
     setShowConfirmModal: (state, action) => {
-      state.showConfirmModal = action.payload;
+      state.showConfirmModal = action.payload
     },
     setShowSettingOptionsModal: (state, action) => {
-      state.showSettingOptionsModal = action.payload;
+      state.showSettingOptionsModal = action.payload
+    },
+
+    setIsLoggedIn: (state, action) => {
+      state.isLogged = action.payload
+    },
+
+    setSignInUserName: (state, action) => {
+      state.signInUserName = action.payload
     },
   },
-});
+})
 
-export const hangmanActions = hangmanSlice.actions;
-export default hangmanSlice;
+export const hangmanActions = hangmanSlice.actions
+export default hangmanSlice

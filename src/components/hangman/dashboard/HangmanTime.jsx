@@ -1,45 +1,45 @@
-import React, { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { hangmanActions } from '../../../store/Hangman-slice';
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { hangmanActions } from '../../../store/Hangman-slice'
 
 const HangmanTime = ({ hasLost, hasWon }) => {
-  const dispatch = useDispatch();
-  const { remainingTime } = useSelector((state) => state.hangman);
-  const { lifes } = useSelector((state) => state.hangman);
-  const { toGuessWord } = useSelector((state) => state.hangman);
-  const { guessedLetters } = useSelector((state) => state.hangman);
+  const dispatch = useDispatch()
+  const { remainingTime } = useSelector((state) => state.hangman)
+  const { lifes } = useSelector((state) => state.hangman)
+  const { toGuessWord } = useSelector((state) => state.hangman)
+  const { guessedLetters } = useSelector((state) => state.hangman)
 
-  let shouldPulse = remainingTime <= 3;
-  if (remainingTime === 0 || hasLost || hasWon) shouldPulse = false;
+  let shouldPulse = remainingTime <= 3
+  if (remainingTime === 0 || hasLost || hasWon) shouldPulse = false
 
-  const shouldHide = remainingTime === 0 || lifes === 0 || hasWon;
+  const shouldHide = remainingTime === 0 || lifes === 0 || hasWon
 
   const handleTimeOut = useCallback(() => {
-    if (lifes === 0) return;
+    if (lifes === 0) return
     const unFoundLetters = toGuessWord
       .split('')
-      .filter((letter) => !guessedLetters.includes(letter));
+      .filter((letter) => !guessedLetters.includes(letter))
 
     const hintKey =
-      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)];
+      unFoundLetters[Math.floor(Math.random() * unFoundLetters.length)]
 
-    dispatch(hangmanActions.setKeyHint(hintKey));
-  }, [dispatch, guessedLetters, lifes, toGuessWord]);
+    dispatch(hangmanActions.setKeyHint(hintKey))
+  }, [dispatch, guessedLetters, lifes, toGuessWord])
 
   useEffect(() => {
-    if (hasLost || hasWon) return;
+    if (hasLost || hasWon) return
     if (remainingTime === 0) {
-      return handleTimeOut();
+      return handleTimeOut()
     }
     const updateTimeInterval = setInterval(() => {
-      dispatch(hangmanActions.decreaseRemainingTime());
-    }, 1000);
+      dispatch(hangmanActions.decreaseRemainingTime())
+    }, 1000)
 
     return () => {
-      clearInterval(updateTimeInterval);
-    };
+      clearInterval(updateTimeInterval)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasLost, remainingTime]);
+  }, [hasLost, remainingTime])
 
   return (
     <div
@@ -54,7 +54,7 @@ const HangmanTime = ({ hasLost, hasWon }) => {
       <span>Hint after:</span>
       <span>{remainingTime}</span>
     </div>
-  );
-};
+  )
+}
 
-export default HangmanTime;
+export default HangmanTime

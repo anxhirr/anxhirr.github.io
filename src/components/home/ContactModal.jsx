@@ -1,10 +1,10 @@
-import React from 'react';
-import Overlay from '../../overlay/Overlay';
+import React from 'react'
+import Overlay from '../../overlay/Overlay'
 
 const ContactModal = ({ setContact }) => {
   const handleClose = () => {
-    setContact(false);
-  };
+    setContact(false)
+  }
 
   return (
     <Overlay>
@@ -34,7 +34,7 @@ const ContactModal = ({ setContact }) => {
         </div>
       </div>
     </Overlay>
-  );
-};
+  )
+}
 
-export default ContactModal;
+export default ContactModal

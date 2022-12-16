@@ -1,16 +1,16 @@
-import React from 'react';
-import { FiSettings } from 'react-icons/fi';
-import { useDispatch, useSelector } from 'react-redux';
-import { hangmanActions } from '../../store/Hangman-slice';
-import SettingOptionsModal from './modal/SettingOptionsModal';
+import React from 'react'
+import { FiSettings } from 'react-icons/fi'
+import { useDispatch, useSelector } from 'react-redux'
+import { hangmanActions } from '../../store/Hangman-slice'
+import SettingOptionsModal from './modal/SettingOptionsModal'
 
 const HangmanSettings = () => {
-  const dispatch = useDispatch();
-  const { showSettingOptionsModal } = useSelector((state) => state.hangman);
+  const dispatch = useDispatch()
+  const { showSettingOptionsModal } = useSelector((state) => state.hangman)
 
   const handleSettings = () => {
-    dispatch(hangmanActions.setShowSettingOptionsModal(true));
-  };
+    dispatch(hangmanActions.setShowSettingOptionsModal(true))
+  }
 
   return (
     <>
@@ -25,7 +25,7 @@ const HangmanSettings = () => {
         </span>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HangmanSettings;
+export default HangmanSettings

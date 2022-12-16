@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const ToDoItem = ({ todoItems, setTodoItems }) => {
-  const [edittedName, setEdittedName] = useState('');
+  const [edittedName, setEdittedName] = useState('')
 
   const handleEdit = (index) => {
     const newTodos = todoItems.map((item, i) => {
       if (i === index) {
-        item.edit = true;
-        setEdittedName(item.name);
+        item.edit = true
+        setEdittedName(item.name)
       }
-      return item;
-    });
-    setTodoItems(newTodos);
-  };
+      return item
+    })
+    setTodoItems(newTodos)
+  }
   const handleSave = (index) => {
     const newTodos = todoItems.map((item, i) => {
       if (i === index) {
-        item.edit = false;
-        item.name = edittedName;
+        item.edit = false
+        item.name = edittedName
       }
-      return item;
-    });
-    setTodoItems(newTodos);
-  };
+      return item
+    })
+    setTodoItems(newTodos)
+  }
 
   const handleDelete = (index) => {
-    const newTodos = todoItems.filter((_, i) => i !== index);
+    const newTodos = todoItems.filter((_, i) => i !== index)
 
-    setTodoItems(newTodos);
-  };
+    setTodoItems(newTodos)
+  }
 
   const handleInput = (e) => {
-    setEdittedName(e.target.value);
-  };
+    setEdittedName(e.target.value)
+  }
 
   return todoItems.map((item, itemIndex) => {
     return (
@@ -75,8 +75,8 @@ const ToDoItem = ({ todoItems, setTodoItems }) => {
           </button>
         </div>
       </li>
-    );
-  });
-};
+    )
+  })
+}
 
-export default ToDoItem;
+export default ToDoItem

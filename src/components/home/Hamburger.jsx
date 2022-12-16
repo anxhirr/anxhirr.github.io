@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 const Hamburger = ({ active }) => {
-  const animation = active ? 'close-anim' : 'open-anim';
-  const color = active ? 'purple' : 'black';
+  const animation = active ? 'close-anim' : 'open-anim'
+  const color = active ? 'purple' : 'black'
 
   return (
     <div className={`hamburger-box ${color}`}>
@@ -37,7 +37,7 @@ const Hamburger = ({ active }) => {
         />
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default Hamburger;
+export default Hamburger

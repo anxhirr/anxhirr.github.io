@@ -27,6 +27,7 @@
     align-items: center;
     gap: 3rem;
     font-size: 2.5rem;
+    margin-bottom: -2rem;
   }
 
   &__close-icon--box {
@@ -36,17 +37,35 @@
     border-radius: 2rem;
   }
 
-  &__search-login--box {
-    margin-top: auto;
-    gap: 2rem;
+  &__search {
+    &-input {
+      padding: 1.5rem;
+      padding-left: 4rem;
+      width: 80%;
+      background-image: url(../../assets/svg/search-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 0.8rem 1.25rem;
+      background-size: 3rem 3rem;
+      border: none;
+      box-shadow: var(--box-shadow-keyboard);
+      border-radius: 1rem;
+
+      transition: all 0.3s ease-in-out;
+
+      &:focus {
+        width: 100%;
+      }
+    }
   }
 
-  &__search {
-    padding: 0.5rem 1rem;
+  &__login--box {
+    margin-top: auto;
   }
 
   &__login {
     padding: 0 5rem;
+    width: fit-content;
+    margin-inline: auto;
   }
 
   &__btn {
@@ -104,10 +123,10 @@
     border-radius: 0 0 1rem 1rem;
 
     &--visible {
-      position: relative;
       opacity: 1;
       visibility: visible;
       transform: translateY(0%);
+      z-index: 999;
     }
 
     &-list {

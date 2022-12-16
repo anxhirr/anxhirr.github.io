@@ -5,18 +5,25 @@
   &__content {
     max-width: 60rem;
     margin-inline: auto;
-  }
-
-  &__button {
     text-align: center;
   }
 
+  &__button {
+    color: #fff;
+    background-color: var(--clr-purple);
+  }
+
   &__cards {
-    // display: grid;
-    // grid-template-columns: 1fr 1fr 1fr 1fr;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
+
+    @include responsive(600) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @include responsive(400) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__card {

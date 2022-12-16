@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Hamburger from './Hamburger';
-import ContactModal from './ContactModal';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Hamburger from './Hamburger'
+import ContactModal from './ContactModal'
 
 const NavBar = () => {
-  const [checked, setChecked] = useState(false);
-  const toggeled = checked ? 'nav--toggeled' : '';
-  const [contact, setContact] = useState(false);
+  const [checked, setChecked] = useState(false)
+  const toggeled = checked ? 'nav--toggeled' : ''
+  const [contact, setContact] = useState(false)
 
   const handleChecked = () => {
-    setChecked((prev) => !prev);
-  };
+    setChecked((prev) => !prev)
+  }
 
   const handleContact = () => {
-    setContact(true);
-    setChecked(false);
-  };
+    setContact(true)
+    setChecked(false)
+  }
 
   return (
     <>
@@ -50,7 +50,7 @@ const NavBar = () => {
       </nav>
       {contact && <ContactModal setContact={setContact} />}
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

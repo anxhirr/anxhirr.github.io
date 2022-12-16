@@ -1,8 +1,8 @@
-import React from 'react';
-import Hangman from '../components/hangman/Hangman';
+import React from 'react'
+import Hangman from '../components/hangman/Hangman'
 
 const HangmanPage = () => {
-  return <Hangman />;
-};
+  return <Hangman />
+}
 
-export default HangmanPage;
+export default HangmanPage

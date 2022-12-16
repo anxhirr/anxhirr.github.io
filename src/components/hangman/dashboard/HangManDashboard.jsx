@@ -1,11 +1,6 @@
-import { useSelector } from 'react-redux';
-import HangmanTime from './HangmanTime';
+import HangmanTime from './HangmanTime'
 
-const HangManDashboard = ({ hasLost, hasWon }) => {
-  const { score } = useSelector((state) => state.hangman);
-  const { lifes } = useSelector((state) => state.hangman);
-  const { highestScore } = useSelector((state) => state.hangman);
-
+const HangManDashboard = ({ hasLost, hasWon, highestScore, lifes, score }) => {
   return (
     <div className='hangman-dashboard'>
       <div className='hangman-dashboard__score'>
@@ -23,7 +18,7 @@ const HangManDashboard = ({ hasLost, hasWon }) => {
 
       <HangmanTime hasWon={hasWon} hasLost={hasLost} />
     </div>
-  );
-};
+  )
+}
 
-export default HangManDashboard;
+export default HangManDashboard

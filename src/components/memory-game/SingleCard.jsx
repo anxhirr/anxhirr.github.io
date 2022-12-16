@@ -1,17 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-const SingleCard = ({ card, handleChoice, shown, disabled }) => {
+const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
-    if (disabled) return;
-    console.log('disabled', disabled);
-    handleChoice(card);
-  };
+    if (disabled) return
+    handleChoice(card)
+  }
 
   return (
     <div className='card-game__card' onClick={handleClick}>
-      {shown ? card.number : 'X'}
+      {flipped ? card.number : 'X'}
     </div>
-  );
-};
+  )
+}
 
-export default SingleCard;
+export default SingleCard

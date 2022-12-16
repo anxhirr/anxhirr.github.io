@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { AiFillBank } from 'react-icons/ai';
-import { FcTodoList } from 'react-icons/fc';
-import { TiWeatherStormy } from 'react-icons/ti';
-import { BiMemoryCard } from 'react-icons/bi';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { AiFillBank } from 'react-icons/ai'
+import { FcTodoList } from 'react-icons/fc'
+import { TiWeatherStormy } from 'react-icons/ti'
+import { BiMemoryCard } from 'react-icons/bi'
 
 const ProjectsSection = () => {
   return (
@@ -72,7 +72,7 @@ const ProjectsSection = () => {
         </ul>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProjectsSection;
+export default ProjectsSection

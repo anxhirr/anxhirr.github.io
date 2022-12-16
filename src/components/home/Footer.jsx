@@ -1,7 +1,7 @@
-import React from 'react';
-import { AiFillLinkedin } from 'react-icons/ai';
-import { AiFillGithub } from 'react-icons/ai';
-import { AiFillInstagram } from 'react-icons/ai';
+import React from 'react'
+import { AiFillLinkedin } from 'react-icons/ai'
+import { AiFillGithub } from 'react-icons/ai'
+import { AiFillInstagram } from 'react-icons/ai'
 
 const Footer = () => {
   return (
@@ -41,7 +41,7 @@ const Footer = () => {
         </ul>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

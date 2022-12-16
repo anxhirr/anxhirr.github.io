@@ -1,8 +1,8 @@
-import React from 'react';
-import Memory from '../components/memory-game/Memory';
+import React from 'react'
+import Memory from '../components/memory-game/Memory'
 
 const MemoryPage = () => {
-  return <Memory />;
-};
+  return <Memory />
+}
 
-export default MemoryPage;
+export default MemoryPage

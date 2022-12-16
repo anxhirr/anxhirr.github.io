@@ -1,8 +1,8 @@
-import React from 'react';
-import ToDo from '../components/todo/ToDo';
+import React from 'react'
+import ToDo from '../components/todo/ToDo'
 
 const ToDoPage = () => {
-  return <ToDo />;
-};
+  return <ToDo />
+}
 
-export default ToDoPage;
+export default ToDoPage

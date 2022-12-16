@@ -1,5 +1,5 @@
-import React from 'react';
-import heroimg from '../../assets/images/me.jpg';
+import React from 'react'
+import heroimg from '../../assets/images/me.jpg'
 
 const HeroSection = () => {
   return (
@@ -19,7 +19,7 @@ const HeroSection = () => {
         <p className='subheading'>Front-End Dev</p>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

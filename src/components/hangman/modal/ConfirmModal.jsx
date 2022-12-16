@@ -1,26 +1,28 @@
-import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import { hangmanActions } from '../../../store/Hangman-slice';
-import Overlay from '../../../overlay/Overlay';
+import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import useOnClickOutside from '../../../hooks/useOnClickOutside'
+import { hangmanActions } from '../../../store/Hangman-slice'
+import Overlay from '../../../overlay/Overlay'
 
-const WinLosePopUp = ({ hasLost, startNewGame }) => {
-  const dispatch = useDispatch();
-  const onClickOutside = useRef();
-  const { score } = useSelector((state) => state.hangman);
+const WinLosePopUp = ({ hasLost, startNewGame, score, guessedLetters }) => {
+  const dispatch = useDispatch()
+  const onClickOutside = useRef()
 
   useOnClickOutside(onClickOutside, () => {
-    dispatch(hangmanActions.setShowConfirmModal(false));
-  });
+    dispatch(hangmanActions.setShowConfirmModal(false))
+  })
 
   const handleConfirmBtn = (e) => {
-    const btnText = e.target.innerText;
-    dispatch(hangmanActions.setShowConfirmModal(false));
+    const btnText = e.target.innerText
+    dispatch(hangmanActions.setShowConfirmModal(false))
 
     if (btnText === 'YES') {
-      startNewGame();
+      startNewGame()
     }
-  };
+  }
+  console.log(guessedLetters.length)
+
+  if (!hasLost && score === 0) return null
 
   return (
     <Overlay>
@@ -32,6 +34,11 @@ const WinLosePopUp = ({ hasLost, startNewGame }) => {
             </div>
           )}
           {score > 0 && !hasLost && (
+            <div className='hangman-confirm-modal__text'>
+              Are you sure you want to start a new game?
+            </div>
+          )}
+          {guessedLetters.length > 0 && !hasLost && (
             <div className='hangman-confirm-modal__text'>
               Are you sure you want to start a new game?
             </div>
@@ -54,7 +61,7 @@ const WinLosePopUp = ({ hasLost, startNewGame }) => {
         </div>
       </div>
     </Overlay>
-  );
-};
+  )
+}
 
-export default WinLosePopUp;
+export default WinLosePopUp

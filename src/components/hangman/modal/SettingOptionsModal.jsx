@@ -1,13 +1,16 @@
-import React, { useRef, useState } from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { TbLanguage } from 'react-icons/tb';
-import { MdDarkMode } from 'react-icons/md';
-import { CgOptions } from 'react-icons/cg';
-import { useDispatch } from 'react-redux';
-import { hangmanActions } from '../../../store/Hangman-slice';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import Overlay from '../../../overlay/Overlay';
-import SettingOption from './SettingOption';
+import React, { useRef, useState } from 'react'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { TbLanguage } from 'react-icons/tb'
+import { MdDarkMode } from 'react-icons/md'
+import { CgOptions } from 'react-icons/cg'
+import { useDispatch } from 'react-redux'
+import { hangmanActions } from '../../../store/Hangman-slice'
+import useOnClickOutside from '../../../hooks/useOnClickOutside'
+import Overlay from '../../../overlay/Overlay'
+import SettingOption from './SettingOption'
+
+import { AiOutlineSearch } from 'react-icons/ai'
+import { signInWithGoogle } from '../../auth/Firebase'
 
 const SETTING_OPTIONS = [
   {
@@ -34,24 +37,37 @@ const SETTING_OPTIONS = [
     showDropDown: false,
     icon: <CgOptions />,
   },
-];
+]
 
 const SettingOptionsPopUp = () => {
-  const dispatch = useDispatch();
-  const onClickOutside = useRef();
-  const [settingOptions, setSettingOptions] = useState(SETTING_OPTIONS);
-  const [query, setQuery] = useState('');
+  const dispatch = useDispatch()
+  const onClickOutside = useRef()
+  const [settingOptions, setSettingOptions] = useState(SETTING_OPTIONS)
+  const [query, setQuery] = useState('')
 
   const handleClose = () => {
-    dispatch(hangmanActions.setShowSettingOptionsModal(false));
-  };
+    dispatch(hangmanActions.setShowSettingOptionsModal(false))
+  }
   useOnClickOutside(onClickOutside, () => {
-    handleClose();
-  });
+    handleClose()
+  })
 
   const filteredOptions = settingOptions.filter((option) => {
-    return option.name.toLowerCase().includes(query.toLowerCase());
-  });
+    return option.name.toLowerCase().includes(query.toLowerCase())
+  })
+
+  const handleLogIn = async () => {
+    try {
+      const results = await signInWithGoogle()
+      const userName = results.user.displayName
+
+      dispatch(hangmanActions.setSignInUserName(userName))
+      dispatch(hangmanActions.setIsLoggedIn(true))
+      dispatch(hangmanActions.setShowSettingOptionsModal(false))
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Overlay>
@@ -66,6 +82,14 @@ const SettingOptionsPopUp = () => {
               <AiOutlineCloseCircle />
             </div>
           </div>
+          <div className='hangman-settings-modal__search flex-r-center'>
+            <input
+              placeholder='Search Settings'
+              onChange={(e) => setQuery(e.target.value)}
+              className='hangman-settings-modal__search-input'
+              type='text'
+            />
+          </div>
 
           {filteredOptions.map((option) => {
             return (
@@ -74,24 +98,21 @@ const SettingOptionsPopUp = () => {
                 option={option}
                 setSettingOptions={setSettingOptions}
               />
-            );
+            )
           })}
 
-          <div className='hangman-settings-modal__search-login--box flex-col-center'>
-            <input
-              onChange={(e) => setQuery(e.target.value)}
-              className='hangman-settings-modal__search'
-              type='text'
-              placeholder='Search Settings'
-            />
-            <button className='hangman-settings-modal__login hangman-keyboard__key '>
+          <div className='hangman-settings-modal__login--box'>
+            <button
+              onClick={handleLogIn}
+              className='hangman-settings-modal__login hangman-keyboard__key '
+            >
               Login
             </button>
           </div>
         </div>
       </div>
     </Overlay>
-  );
-};
+  )
+}
 
-export default SettingOptionsPopUp;
+export default SettingOptionsPopUp

@@ -1,8 +1,8 @@
-import React from 'react';
-import AboutSection from '../components/home/AboutSection';
-import HeroSection from '../components/home/HeroSection';
-import ProjectsSection from '../components/home/ProjectsSection';
-import ServicesSection from '../components/home/ServicesSection';
+import React from 'react'
+import AboutSection from '../components/home/AboutSection'
+import HeroSection from '../components/home/HeroSection'
+import ProjectsSection from '../components/home/ProjectsSection'
+import ServicesSection from '../components/home/ServicesSection'
 
 const HomePage = () => {
   return (
@@ -12,7 +12,7 @@ const HomePage = () => {
       <AboutSection />
       <ProjectsSection />
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 export const PARTS = [
-  <div className={`hangman-drawing__right `} key={1} />,
+  <div className='hangman-drawing__right' key={1} />,
   <div className='hangman-drawing__down' key={2} />,
   <div className='hangman-drawing__head' key={3} />,
   <div className='hangman-drawing__body' key={4} />,
@@ -9,7 +9,7 @@ export const PARTS = [
   <div className='hangman-drawing__right-arm' key={6} />,
   <div className='hangman-drawing__left-leg' key={7} />,
   <div className='hangman-drawing__right-leg' key={8} />,
-];
+]
 
 const HangmanDrawing = ({ incorrectLetters, hasLost }) => {
   return (
@@ -22,7 +22,7 @@ const HangmanDrawing = ({ incorrectLetters, hasLost }) => {
         <div className='hangman-drawing__ground' />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HangmanDrawing;
+export default HangmanDrawing
