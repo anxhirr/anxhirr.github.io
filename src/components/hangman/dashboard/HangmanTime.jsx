@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import useInterval from '../../../hooks/useInterval'
 import { hangmanActions } from '../../../store/Hangman-slice'
 
 const HangmanTime = ({ hasLost, hasWon }) => {
   const dispatch = useDispatch()
-  const { remainingTime } = useSelector((state) => state.hangman)
-  const { lifes } = useSelector((state) => state.hangman)
-  const { toGuessWord } = useSelector((state) => state.hangman)
-  const { guessedLetters } = useSelector((state) => state.hangman)
+  const { remainingTime, lifes, toGuessWord, guessedLetters } = useSelector(
+    (state) => state.hangman
+  )
 
   let shouldPulse = remainingTime <= 3
   if (remainingTime === 0 || hasLost || hasWon) shouldPulse = false
@@ -16,6 +16,7 @@ const HangmanTime = ({ hasLost, hasWon }) => {
 
   const handleTimeOut = useCallback(() => {
     if (lifes === 0) return
+
     const unFoundLetters = toGuessWord
       .split('')
       .filter((letter) => !guessedLetters.includes(letter))
@@ -25,6 +26,16 @@ const HangmanTime = ({ hasLost, hasWon }) => {
 
     dispatch(hangmanActions.setKeyHint(hintKey))
   }, [dispatch, guessedLetters, lifes, toGuessWord])
+
+  // useInterval(
+  //   () => {
+  //     console.log(remainingTime)
+  //     if (remainingTime === 0) handleTimeOut()
+
+  //     dispatch(hangmanActions.decreaseRemainingTime())
+  //   },
+  //   remainingTime === 0 || hasLost || hasWon ? null : 1000
+  // )
 
   useEffect(() => {
     if (hasLost || hasWon) return
@@ -38,7 +49,6 @@ const HangmanTime = ({ hasLost, hasWon }) => {
     return () => {
       clearInterval(updateTimeInterval)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasLost, remainingTime])
 
   return (

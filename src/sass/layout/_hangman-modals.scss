@@ -18,7 +18,7 @@
   flex-direction: column;
   gap: 4rem;
 
-  height: 90vh;
+  // height: 90vh;
   overflow-y: auto;
 
   &__head {
@@ -58,9 +58,9 @@
     }
   }
 
-  &__login--box {
-    margin-top: auto;
-  }
+  // &__login--box {
+  //   margin-top: auto;
+  // }
 
   &__login {
     padding: 0 5rem;

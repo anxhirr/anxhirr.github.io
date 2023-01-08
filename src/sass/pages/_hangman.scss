@@ -9,6 +9,7 @@
     gap: 3rem;
     background-color: #fff;
     padding: 5rem 0;
+    padding-bottom: 15rem;
     position: relative;
     width: 100%;
     font-family: monospace;
@@ -279,7 +280,7 @@
         animation: keyboard-pulse 0.5s infinite;
       }
 
-      &--next-word,
+      // &--next-word,
       &--new-game {
         background-color: #fff;
       }
@@ -289,7 +290,7 @@
       }
 
       &--new-game {
-        flex-grow: 0;
+        // flex-grow: 0;
         padding: 2rem 3rem;
       }
       &--pulse {

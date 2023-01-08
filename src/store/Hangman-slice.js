@@ -17,6 +17,7 @@ const initialState = {
   remainingTime: TIME__LIMIT,
   keyHint: null,
   showConfirmModal: false,
+  confirmModalText: '',
   showSettingOptionsModal: false,
 
   isLogged: false,
@@ -69,6 +70,9 @@ const hangmanSlice = createSlice({
     },
     setShowConfirmModal: (state, action) => {
       state.showConfirmModal = action.payload
+    },
+    setConfirmModalText: (state, action) => {
+      state.confirmModalText = action.payload
     },
     setShowSettingOptionsModal: (state, action) => {
       state.showSettingOptionsModal = action.payload

@@ -3,7 +3,7 @@ import aboutimg from '../../assets/images/me-2.jpg'
 
 const AboutSection = () => {
   return (
-    <section className='about' id='about'>
+    <section className='about'>
       <div className='about__content container'>
         <div className='u-margin-b--small '>
           <h2 className='heading--secondary '>Who I am</h2>

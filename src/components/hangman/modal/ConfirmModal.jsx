@@ -1,34 +1,46 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import useOnClickOutside from '../../../hooks/useOnClickOutside'
 import { hangmanActions } from '../../../store/Hangman-slice'
 import Overlay from '../../../overlay/Overlay'
 
-const WinLosePopUp = ({ hasLost, startNewGame, score, guessedLetters }) => {
+const ConfirmModal = ({ startNewGame, generalUpdate }) => {
   const dispatch = useDispatch()
   const onClickOutside = useRef()
+
+  const { confirmModalText } = useSelector((state) => state.hangman)
 
   useOnClickOutside(onClickOutside, () => {
     dispatch(hangmanActions.setShowConfirmModal(false))
   })
 
   const handleConfirmBtn = (e) => {
-    const btnText = e.target.innerText
     dispatch(hangmanActions.setShowConfirmModal(false))
-
-    if (btnText === 'YES') {
+    if (
+      confirmModalText ===
+      'Are you sure you want to start a new game? Your score will be reset.'
+    ) {
       startNewGame()
     }
+    if (
+      confirmModalText ===
+      'You will loose 1 life! Are you sure you want to procced?'
+    ) {
+      generalUpdate()
+      dispatch(hangmanActions.decreaseLife())
+    }
   }
-  console.log(guessedLetters.length)
 
-  if (!hasLost && score === 0) return null
+  const handleCancelBtn = () => {
+    dispatch(hangmanActions.setShowConfirmModal(false))
+  }
 
   return (
     <Overlay>
       <div ref={onClickOutside} className='hangman-modal--box'>
         <div className='hangman-confirm-modal'>
-          {hasLost && (
+          {/* {lifes === 0 && (
             <div className='hangman-confirm-modal__text'>
               You ran out of lifes, maybe try again?
             </div>
@@ -42,7 +54,8 @@ const WinLosePopUp = ({ hasLost, startNewGame, score, guessedLetters }) => {
             <div className='hangman-confirm-modal__text'>
               Are you sure you want to start a new game?
             </div>
-          )}
+          )} */}
+          <div className='hangman-confirm-modal__text'>{confirmModalText}</div>
 
           <div className='hangman-confirm-modal__keys u-margin-t--tiny'>
             <button
@@ -51,10 +64,7 @@ const WinLosePopUp = ({ hasLost, startNewGame, score, guessedLetters }) => {
             >
               yes
             </button>
-            <button
-              onClick={handleConfirmBtn}
-              className='hangman-keyboard__key'
-            >
+            <button onClick={handleCancelBtn} className='hangman-keyboard__key'>
               no
             </button>
           </div>
@@ -64,4 +74,4 @@ const WinLosePopUp = ({ hasLost, startNewGame, score, guessedLetters }) => {
   )
 }
 
-export default WinLosePopUp
+export default ConfirmModal

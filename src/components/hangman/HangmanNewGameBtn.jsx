@@ -1,14 +1,22 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { hangmanActions } from '../../store/Hangman-slice'
 
-const HangmanNewGameBtn = ({ hasLost, startNewGame, score, lifes }) => {
+const HangmanNewGameBtn = ({ hasLost, startNewGame }) => {
   const dispatch = useDispatch()
+  const { score, lifes } = useSelector((state) => state.hangman)
 
   const handleNewGame = () => {
     if (score > 0 && !hasLost) {
-      return dispatch(hangmanActions.setShowConfirmModal(true))
+      dispatch(hangmanActions.setShowConfirmModal(true))
+      dispatch(
+        hangmanActions.setConfirmModalText(
+          'Are you sure you want to start a new game? Your score will be reset.'
+        )
+      )
+      return
     }
+
     startNewGame()
   }
 

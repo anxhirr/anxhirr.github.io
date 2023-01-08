@@ -53,8 +53,8 @@
     z-index: 999;
 
     &--checked .nav__background {
-      scale: 200;
-      opacity: 1;
+      scale: 300;
+      visibility: visible;
     }
 
     @include responsive(600) {
@@ -65,7 +65,7 @@
 
   &__background {
     position: fixed;
-    opacity: 0;
+    visibility: hidden;
     width: 1rem;
     height: 1rem;
     top: 4.3rem;
