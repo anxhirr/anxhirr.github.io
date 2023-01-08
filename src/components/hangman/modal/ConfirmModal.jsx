@@ -19,8 +19,10 @@ const ConfirmModal = ({ startNewGame, generalUpdate }) => {
     dispatch(hangmanActions.setShowConfirmModal(false))
     if (
       confirmModalText ===
-      'Are you sure you want to start a new game? Your score will be reset.'
+        'Are you sure you want to start a new game? Your score will be reset.' ||
+      confirmModalText === 'You ran out of lifes, maybe try again?'
     ) {
+      console.log('new game')
       startNewGame()
     }
     if (
