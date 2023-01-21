@@ -1,13 +1,23 @@
 .nav {
   font-size: var(--fs-h2);
   z-index: 1;
+  background-color: var(--clr-bgd);
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
-    background-image: var(--linear-hero);
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 6rem;
+    border-radius: 50%;
   }
 
   &__list {
@@ -27,6 +37,8 @@
     display: inline-block;
     transition: all 0.5s;
 
+    border-bottom: 2px solid transparent;
+
     @include responsive(600) {
       opacity: 0;
       width: 0;
@@ -34,6 +46,7 @@
 
     &:hover {
       color: var(--clr-red);
+      border-color: var(--clr-red);
     }
   }
 

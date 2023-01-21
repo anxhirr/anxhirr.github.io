@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import WordList from './data/WordList'
 
-const TIME__LIMIT = 15
+const TIME__LIMIT = 5
 const LIFES = 4
 
 const getNewWord = () => {
@@ -16,6 +16,7 @@ const initialState = {
   highestScore: JSON.parse(localStorage.getItem('hangman-highest-score')) ?? 0,
   remainingTime: TIME__LIMIT,
   keyHint: null,
+
   showConfirmModal: false,
   confirmModalText: '',
   showSettingOptionsModal: false,

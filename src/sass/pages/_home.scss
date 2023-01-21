@@ -1,54 +1,89 @@
 .hero {
   padding: 10rem 0;
   background-color: transparent;
-  background-image: var(--linear-hero-black);
+  background-color: var(--clr-bgd);
 
   &__content {
-    display: grid;
-    grid-template-areas:
-      'img title'
-      'subtitle subtitle';
-    gap: 2rem;
+    // display: grid;
+    // grid-template-areas:
+    //   'img title'
+    //   'subtitle subtitle';
+    // gap: 2rem;
 
-    align-content: center;
-    justify-content: center;
+    // align-content: center;
+    // justify-content: center;
 
-    @include responsive(600) {
-      grid-template-areas: 'title' 'img' 'subtitle';
-    }
+    // @include responsive(600) {
+    //   grid-template-areas: 'title' 'img' 'subtitle';
+  }
 
-    & p {
-      text-align: right;
-      transform: translateY(-4rem);
-      width: calc(100% + 3rem);
-      position: relative;
-      left: -2.5rem;
+  & p {
+    //   text-align: right;
+    //   transform: translateY(-4rem);
+    //   width: calc(100% + 3rem);
+    //   position: relative;
+    //   left: -2.5rem;
 
-      @include responsive(600) {
-        left: 0;
-        width: auto;
-        text-align: center;
-        transform: translateY(0);
-      }
-    }
+    //   @include responsive(600) {
+    //     left: 0;
+    //     width: auto;
+    //     text-align: center;
+    //     transform: translateY(0);
+    //   }
+    // }
   }
 
   &__heading {
-    line-height: 2;
-    font-weight: var(--fw-reg);
-    font-size: var(--fs-h1);
+    //   line-height: 2;
+    //   font-weight: var(--fw-reg);
+    //   font-size: var(--fs-h1);
 
-    animation: slide-right 1s;
+    //   animation: slide-right 1s;
 
-    &--span {
-      font-size: 5rem;
-      font-weight: 800;
-      letter-spacing: 0.8rem;
-    }
+    //   &--span {
+    //     font-size: 5rem;
+    //     font-weight: 800;
+    //     letter-spacing: 0.8rem;
+    //   }
   }
 
   &__img {
-    animation: slide-left 1s;
+    //   animation: slide-left 1s;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h1 {
+      font-size: 5rem;
+    }
+  }
+
+  &__btn {
+    background-color: var(--clr-purple-1);
+    padding: 1rem 2.5rem;
+    border-radius: 0.7rem;
+  }
+
+  &__img {
+  }
+
+  &__projects {
+    width: 100%;
+    &-list {
+      display: flex;
+      justify-content: space-between;
+
+      &-item {
+        border-bottom: 3px solid var(--clr-purple-1);
+
+        & button {
+          color: inherit;
+        }
+      }
+    }
   }
 }
 

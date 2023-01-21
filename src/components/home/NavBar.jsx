@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Hamburger from './Hamburger'
 import ContactModal from './ContactModal'
 
+import myimg from '../../assets/images/me-1.jpg'
+
 const NavBar = () => {
   const [checked, setChecked] = useState(false)
   const toggeled = checked ? 'nav--toggeled' : ''
@@ -22,8 +24,9 @@ const NavBar = () => {
       <nav className={`nav ${toggeled}`}>
         <div className='nav__content container'>
           <div className='nav__logo'>
+            <img className='nav__img' src={myimg} alt='' />
             <Link to='/' className=''>
-              Portfolio
+              Anxhi Rroshi
             </Link>
           </div>
           <ul className='nav__list flex-r-center'>
@@ -35,7 +38,7 @@ const NavBar = () => {
             </li>
             <li className='nav__item'>
               <Link onClick={handleContact} className='nav__link'>
-                Contact
+                Hire me today
               </Link>
             </li>
           </ul>

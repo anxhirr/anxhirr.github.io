@@ -39,8 +39,14 @@ const HangmanKeyboard = (props) => {
   const { hasLost, hasWon, incorrectLetters, correctLetters, handleNewGame } =
     props
   const dispatch = useDispatch()
-  const { guessedLetters, keyHint, lifes, showSettingOptionsModal, score } =
-    useSelector((state) => state.hangman)
+  const {
+    guessedLetters,
+    keyHint,
+    lifes,
+    showSettingOptionsModal,
+    score,
+    showConfirmModal,
+  } = useSelector((state) => state.hangman)
   // console.log(guessedLetters)
 
   const addGuessedLetter = useCallback(
@@ -77,7 +83,7 @@ const HangmanKeyboard = (props) => {
   }, [dispatch, hasLost, hasWon, guessedLetters.length, score])
 
   useEffect(() => {
-    if (showSettingOptionsModal) return
+    if (showSettingOptionsModal || showConfirmModal) return
     const handleKeyPress = (e) => {
       const pressedKey = e.key
 
@@ -103,6 +109,7 @@ const HangmanKeyboard = (props) => {
     handleNextWord,
     lifes,
     showSettingOptionsModal,
+    showConfirmModal,
   ])
 
   return (

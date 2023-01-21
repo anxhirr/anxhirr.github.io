@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import useInterval from '../../../hooks/useInterval'
 import { hangmanActions } from '../../../store/Hangman-slice'
 
 const HangmanTime = ({ hasLost, hasWon }) => {
@@ -39,6 +38,7 @@ const HangmanTime = ({ hasLost, hasWon }) => {
 
   useEffect(() => {
     if (hasLost || hasWon) return
+
     if (remainingTime === 0) {
       return handleTimeOut()
     }
@@ -49,6 +49,7 @@ const HangmanTime = ({ hasLost, hasWon }) => {
     return () => {
       clearInterval(updateTimeInterval)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasLost, remainingTime])
 
   return (

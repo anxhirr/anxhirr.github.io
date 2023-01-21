@@ -11,13 +11,15 @@ function App() {
   return (
     <>
       <NavBar />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/to-do' element={<ToDoPage />} />
-        <Route path='/card-memory-game' element={<MemoryPage />} />
-        <Route path='/hangman-game' element={<HangmanPage />} />
-        <Route path='/calculator' element={<Calculator />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/to-do' element={<ToDoPage />} />
+          <Route path='/card-memory-game' element={<MemoryPage />} />
+          <Route path='/hangman-game' element={<HangmanPage />} />
+          <Route path='/calculator' element={<Calculator />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   )

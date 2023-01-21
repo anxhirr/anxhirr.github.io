@@ -7,7 +7,7 @@ const HangmanNewGameBtn = ({ hasLost, startNewGame }) => {
   const { score, lifes } = useSelector((state) => state.hangman)
 
   const handleNewGame = () => {
-    if (score > 0 && !hasLost) {
+    if (score > 0 && !hasLost && lifes !== 0) {
       dispatch(hangmanActions.setShowConfirmModal(true))
       dispatch(
         hangmanActions.setConfirmModalText(
