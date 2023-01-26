@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Hamburger from './Hamburger'
 import ContactModal from './ContactModal'
 
-import myimg from '../../assets/images/me-1.jpg'
+import myimg from '../../assets/images/me-3.jpg'
 
 const NavBar = () => {
   const [checked, setChecked] = useState(false)
@@ -21,13 +21,11 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className={`nav ${toggeled}`}>
-        <div className='nav__content container'>
-          <div className='nav__logo'>
-            <img className='nav__img' src={myimg} alt='' />
-            <Link to='/' className=''>
-              Anxhi Rroshi
-            </Link>
+      <nav className={`nav ${toggeled} text-lg`}>
+        <div className=' flex justify-between container py-4'>
+          <div className='flex gap-3 justify-center items-center'>
+            <img className='nav__img w-12 h-12 ' src={myimg} alt='' />
+            <Link to='/'>Anxhi Rroshi</Link>
           </div>
           <ul className='nav__list flex-r-center'>
             <li className='nav__item'>

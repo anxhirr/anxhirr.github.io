@@ -23,33 +23,31 @@ const HeroSection = () => {
 
   return (
     <section className='hero'>
-      <div className='hero__content  container u-txt-c'>
-        <p>Design. Build. Improve.</p>
-        <h1 className='u-margin-b--small'>
+      <div className='container u-txt-c flex flex-col gap-10 items-center pt-20'>
+        <p className='-mb-6 text-lg'>Design. Build. Improve.</p>
+        <h1 className='text-5xl'>
           I create beautiful websites
           <pre></pre>
           your users will love
         </h1>
-        <Link className='hero__btn btn u-margin-b--small'>Make it happen</Link>
+        <Link className='hero__btn btn text-sm bg-purple'>Make it happen</Link>
 
-        <img
-          className=' hero__img u-margin-b--small'
-          src={toShowImg}
-          alt='hangman game project'
-        />
+        <div>
+          <img className='' src={toShowImg} alt='hangman game project' />
+        </div>
 
-        <div className='hero__projects'>
-          <ul className='hero__projects-list'>
-            <li className='hero__projects-list-item'>
+        <div className=' w-full'>
+          <ul className=' flex justify-between '>
+            <li className='border-b-4 border-b-solid border-b-purple '>
               <button onClick={handleProjectClick}>Hangman</button>
             </li>
-            <li className='hero__projects-list-item'>
+            <li className='border-b-4 border-b-solid border-b-purple'>
               <button onClick={handleProjectClick}>Accointing</button>
             </li>
-            <li className='hero__projects-list-item'>
+            <li className='border-b-4 border-b-solid border-b-purple'>
               <button onClick={handleProjectClick}>To Do</button>
             </li>
-            <li className='hero__projects-list-item'>
+            <li className='border-b-4 border-b-solid border-b-purple'>
               <button>See my other Projects</button>
             </li>
           </ul>

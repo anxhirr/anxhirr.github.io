@@ -2,88 +2,70 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Service from './Service'
 import { AiOutlineSearch } from 'react-icons/ai'
+import { IoBusinessSharp } from 'react-icons/io5'
+import { MdDesignServices } from 'react-icons/md'
+import { MdDeveloperMode } from 'react-icons/md'
+import { TbTestPipe } from 'react-icons/tb'
+import { BiSupport } from 'react-icons/bi'
 
 const SERVICES = [
   {
     title: 'Website Review',
     description:
-      'I make sure your website is performing its best by thoroughly reviewing it before making any changes. I will also provide you with a detailed report of my findings and recommendations.',
-    icon: { AiOutlineSearch },
+      'I make sure your website is performing its best by thoroughly reviewing it before making any changes.',
+    icon: <AiOutlineSearch />,
   },
   {
     title: 'Business Strategy',
     description:
       'We discuss what you are trying to achieve, and place goals on your website planning how to achieve that. We also discuss your target audience and how to reach them.',
-    icon: 'fas fa-search',
+    icon: <IoBusinessSharp />,
   },
   {
     title: 'User Experience Design',
     description:
       'I design your website to be as easy to use as possible while guiding users towards the end goal. I also make sure your website is visually appealing and easy to navigate.',
-    icon: 'fas fa-search',
+    icon: <MdDesignServices />,
   },
   {
     title: 'Tailored Development',
     description:
       'I build with your goals in mind, whether you want a simple flexible website, a custom storefront or a SaaS product. I will make sure your website is built to your specifications.',
-    icon: 'fas fa-search',
+    icon: <MdDeveloperMode />,
   },
   {
     title: 'Rigorous Testing',
     description:
       'I ensure your website is of excellent quality by thoroughly testing using multiple approaches.  I also make sure your website is compatible with all major browsers and devices.',
-    icon: 'fas fa-search',
+    icon: <TbTestPipe />,
   },
   {
     title: 'Ongoing Support',
     description:
       'Your website is always growing. Whether you’re adding new features or making improvements I’m here to help. I will also make sure your website is always up to date with the latest security patches.',
-    icon: 'fas fa-search',
+    icon: <BiSupport />,
   },
 ]
 
 const ServicesSection = () => {
+  console.log(AiOutlineSearch())
   return (
     <section className='services'>
-      <h2 className='heading--secondary u-margin-b--small'>
-        Everything you need for a perfect Website
-      </h2>
-      {/* <div>
-        <ul className='services__list'>
-          <Service services={SERVICES} />
-        </ul>
-      </div> */}
-
-      <div className='services--box flex-r-center u-margin-b--small container'>
-        <div className='services__service flex-col-center'>
-          <h3 className='heading-tertiary'>Design</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            ducimus quae nostrum ullam fuga! Minus vel expedita maiores iure?
-            Maiores, pariatur odio autem quam mollitia molestias repudiandae
-            cupiditate alias optio.
-          </p>
+      <div className='container py-20'>
+        <div className='text-center mb-14'>
+          <h2 className='text-3xl pb-4 border-b-4 border-b-purple inline-block px-14'>
+            Everything you need for a perfect Website
+          </h2>
         </div>
-        <div className='services__service flex-col-center'>
-          <h3 className='heading-tertiary'>Development</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            ducimus quae nostrum ullam fuga! Minus vel expedita maiores iure?
-            Maiores, pariatur odio autem quam mollitia molestias repudiandae
-            cupiditate alias optio.
-          </p>
+        <div className='mb-14'>
+          <ul className='grid grid-cols-3 gap-x-14 gap-y-24 text-left'>
+            <Service services={SERVICES} />
+          </ul>
         </div>
-        <div className='services__service flex-col-center'>
-          <h3 className='heading-tertiary'>E-Commerce</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            ducimus quae nostrum ullam fuga! Minus vel expedita maiores iure?
-            Maiores, pariatur odio autem quam mollitia molestias repudiandae
-            cupiditate alias optio.
-          </p>
+        <div className='text-center'>
+          <Link className='btn btn--purple '>Find more</Link>
         </div>
       </div>
-      <Link className='btn btn--purple'>My Work</Link>
     </section>
   )
 }

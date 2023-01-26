@@ -6,10 +6,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 1.2rem;
     background-color: #fff;
-    padding: 5rem 0;
-    padding-bottom: 15rem;
+    padding: 2.5rem 0;
+    padding-bottom: 1rem;
     position: relative;
     width: 100%;
     font-family: monospace;
@@ -19,13 +19,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
-    max-width: 40rem;
-    padding: 0 1.5rem;
+    max-width: 25rem;
+    padding: 0 1rem;
 
     &__heading {
-      font-size: 5rem;
+      font-size: 2.5rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -33,7 +33,7 @@
     &__settings {
       &-icon {
         &--box {
-          width: 3rem;
+          width: 1.5rem;
           cursor: pointer;
           display: flex;
           justify-content: center;
@@ -49,7 +49,7 @@
 
   &-dashboard {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -86,71 +86,71 @@
     }
 
     &__ground {
-      width: 20rem;
-      height: 1rem;
+      width: 15rem;
+      height: 0.5rem;
       background: var(--clr-black--1);
     }
     &__stand {
-      height: 20rem;
-      width: 1rem;
+      height: 13rem;
+      width: 0.5rem;
       background: var(--clr-black--1);
     }
     &__right {
-      width: 15rem;
-      height: 1rem;
-      margin-left: 14rem;
+      width: 10rem;
+      height: 0.5rem;
+      margin-left: 9.5rem;
       background: var(--clr-black--1);
     }
     &__down {
       position: absolute;
-      height: 3rem;
-      width: 1rem;
+      height: 1.5rem;
+      width: 0.5rem;
       top: 0;
       right: 0;
       background: var(--clr-black--1);
     }
     &__head {
       position: absolute;
-      height: 4rem;
-      width: 4rem;
-      border: 1rem solid var(--clr-black--1);
+      height: 2rem;
+      width: 2rem;
+      border: 0.5rem solid var(--clr-black--1);
       border-radius: 100%;
-      top: 2rem;
-      right: -1.5rem;
+      top: 1rem;
+      right: -0.8rem;
     }
     &__body {
       position: absolute;
-      height: 8rem;
-      width: 1rem;
-      top: 5rem;
+      height: 4rem;
+      width: 0.5rem;
+      top: 2.5rem;
       right: 0;
       background: var(--clr-black--1);
     }
     &__left-arm {
       position: absolute;
-      height: 1rem;
-      width: 6rem;
-      top: 9rem;
-      right: 1rem;
+      height: 0.5rem;
+      width: 3rem;
+      top: 4.5rem;
+      right: 0.5rem;
       transform-origin: bottom right;
       rotate: 45deg;
       background: var(--clr-black--1);
     }
     &__right-arm {
       position: absolute;
-      height: 1rem;
-      width: 6rem;
-      top: 9rem;
-      right: -6rem;
+      height: 0.5rem;
+      width: 3rem;
+      top: 4.5rem;
+      right: -3rem;
       transform-origin: bottom left;
       rotate: -45deg;
       background: var(--clr-black--1);
     }
     &__left-leg {
       position: absolute;
-      height: 1rem;
-      width: 6rem;
-      top: 12rem;
+      height: 0.5rem;
+      width: 3rem;
+      top: 6rem;
       right: 0;
       transform-origin: bottom right;
       rotate: -60deg;
@@ -158,10 +158,10 @@
     }
     &__right-leg {
       position: absolute;
-      height: 1rem;
-      width: 6rem;
-      top: 12rem;
-      right: -5rem;
+      height: 0.5rem;
+      width: 3rem;
+      top: 6rem;
+      right: -2.5rem;
       transform-origin: bottom left;
       rotate: 60deg;
       background: var(--clr-black--1);
@@ -182,11 +182,11 @@
   }
 
   &-word {
-    font-size: 5rem;
+    font-size: 2.5rem;
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
-    gap: 2rem;
+    gap: 1.2rem;
     text-transform: uppercase;
     font-family: monospace;
 
@@ -197,7 +197,7 @@
       &-box {
         flex: 1;
         padding: 0 1rem;
-        border-bottom: 1rem solid var(--clr-black--1);
+        border-bottom: 0.5rem solid var(--clr-black--1);
         text-align: center;
         position: relative;
 
@@ -228,7 +228,7 @@
   }
 
   &-keyboard {
-    max-width: 85rem;
+    max-width: 50rem;
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     gap: 0.65rem;
@@ -237,12 +237,12 @@
 
     &__key {
       grid-column: span 2;
-      font-size: 1.8rem;
+      font-size: 1rem;
       font-weight: 600;
       font-family: inherit;
       text-transform: uppercase;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       box-shadow: var(--box-shadow-keyboard);
       background: var(--clr-white-2);
       border-radius: 0.8rem;
@@ -291,7 +291,7 @@
 
       &--new-game {
         // flex-grow: 0;
-        padding: 2rem 3rem;
+        padding: 1rem 1.5rem;
       }
       &--pulse {
         animation: keyboard-pulse 0.5s infinite;

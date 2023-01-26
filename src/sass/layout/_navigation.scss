@@ -1,5 +1,5 @@
 .nav {
-  font-size: var(--fs-h2);
+  // font-size: var(--fs-h2);
   z-index: 1;
   background-color: var(--clr-bgd);
 
@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   &__logo {
@@ -16,7 +16,7 @@
   }
 
   &__img {
-    height: 6rem;
+    // height: 6rem;
     border-radius: 50%;
   }
 

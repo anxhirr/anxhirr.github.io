@@ -9,16 +9,16 @@ const ProjectsSection = () => {
   return (
     <section className='projects'>
       <div className='projects__content container'>
-        <div className='u-margin-b--small txt-c'>
-          <h2 className='heading--secondary '>My Projects</h2>
+        <div className='text-center mb-16'>
+          <h2 className='text-4xl'>My Projects</h2>
         </div>
         <ul className='projects__list '>
-          <li className='projects__item flex-col-center'>
+          <li className='projects__item bg-secondary flex flex-col gap-6 items-center p-8'>
             <span className='project__icon-box'>
               <FcTodoList />
             </span>
-            <h5 className='project__title'>ToDo</h5>
-            <p className='project__description'>
+            <h5 className='project__title text-2xl'>ToDo</h5>
+            <p className='project__description font-thin text-sm'>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast
               as possible
@@ -27,12 +27,12 @@ const ProjectsSection = () => {
               Learn more
             </Link>
           </li>
-          <li className='projects__item flex-col-center'>
+          <li className='projects__item bg-secondary flex flex-col gap-6 items-center p-8'>
             <span className='project__icon-box'>
               <TiWeatherStormy />
             </span>
-            <h5 className='project__title'>Hangman</h5>
-            <p className='project__description'>
+            <h5 className='project__title text-2xl'>Hangman</h5>
+            <p className='project__description font-thin text-sm'>
               A simple hangman game built with React. The user can guess a word
               by clicking on the letters of the alphabet or by typing the letter
               on the keyboard and pressing enter.
@@ -41,12 +41,12 @@ const ProjectsSection = () => {
               Learn more
             </Link>
           </li>
-          <li className='projects__item flex-col-center'>
+          <li className='projects__item bg-secondary flex flex-col gap-6 items-center p-8'>
             <span className='project__icon-box'>
               <BiMemoryCard />
             </span>
-            <h5 className='project__title'>Memory Game</h5>
-            <p className='project__description'>
+            <h5 className='project__title text-2xl'>Memory Game</h5>
+            <p className='project__description font-thin text-sm'>
               Every website should be built with 2 primary goals: Firstly, it
               needs to work across all devices. Secondly, it needs to be as fast
               as possible
@@ -55,13 +55,13 @@ const ProjectsSection = () => {
               Learn more
             </Link>
           </li>
-          <li className='projects__item flex-col-center'>
+          <li className='projects__item bg-secondary flex flex-col gap-6 items-center p-8'>
             <span className='project__icon-box'>
               <AiFillBank />
             </span>
 
-            <h5 className='project__title '>Calculator</h5>
-            <p className='project__description'>
+            <h5 className='project__title text-2xl '>Calculator</h5>
+            <p className='project__description font-thin text-sm'>
               Calculator is a minimalist mathematic application that allows the
               user to do very mininmal math operations
             </p>

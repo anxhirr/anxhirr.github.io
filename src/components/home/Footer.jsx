@@ -6,36 +6,39 @@ import { AiFillInstagram } from 'react-icons/ai'
 const Footer = () => {
   return (
     <footer className='footer'>
-      <div className='footer__content flex-col-center'>
-        <a href='mailto:anxhirr@gmail.com' className='footer__link'>
+      <div className='bg-black pt-20 pb-14 text-xl flex flex-col items-center gap-8'>
+        <a
+          href='mailto:anxhirr@gmail.com'
+          className=' text-purple hover:underline hover:opacity-80'
+        >
           anxhirr@gmail.com
         </a>
-        <ul className='footer__social-list flex-r-center'>
-          <li className='footer__social-item'>
+        <ul className='text-purple flex gap-20 justify-between '>
+          <li className='w-8 hover:opacity-80 '>
             <a
               target='_blank'
               rel='noreferrer'
               href='https://al.linkedin.com/in/anxhi-rroshi-129684165'
             >
-              <AiFillLinkedin />
+              <AiFillLinkedin className='fill-purple' />
             </a>
           </li>
-          <li className='footer__social-item'>
+          <li className='w-8 hover:opacity-80 '>
             <a
               target='_blank'
               rel='noreferrer'
               href='https://github.com/anxhirr'
             >
-              <AiFillGithub />
+              <AiFillGithub className='fill-purple' />
             </a>
           </li>
-          <li className='footer__social-item'>
+          <li className='w-8 hover:opacity-80 '>
             <a
               target='_blank'
               rel='noreferrer'
               href='https://www.instagram.com/anxhiirr/'
             >
-              <AiFillInstagram />
+              <AiFillInstagram className='fill-purple' />
             </a>
           </li>
         </ul>

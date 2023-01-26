@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import WordList from './data/WordList'
 
-const TIME__LIMIT = 5
+const TIME__LIMIT = 15
 const LIFES = 4
 
 const getNewWord = () => {
