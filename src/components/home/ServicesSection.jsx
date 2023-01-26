@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Service from './Service'
+// import Service from './Service'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoBusinessSharp } from 'react-icons/io5'
 import { MdDesignServices } from 'react-icons/md'
@@ -47,6 +47,32 @@ const SERVICES = [
   },
 ]
 
+const Service = () => {
+  return (
+    <>
+      {SERVICES.map((service, index) => {
+        console.log(service)
+
+        return (
+          <li key={index} className='flex -mx-3 text-left'>
+            <div className='mx-3'>
+              <div className='p-4 w-16 h-16 grid place-items-center'>
+                {service.icon}
+              </div>
+            </div>
+            <div>
+              <h3 className='services__title text-xl mb-4'>{service.title}</h3>
+              <p className='services__description font-thin text-xs'>
+                {service.description}
+              </p>
+            </div>
+          </li>
+        )
+      })}
+    </>
+  )
+}
+
 const ServicesSection = () => {
   console.log(AiOutlineSearch())
   return (
@@ -58,8 +84,8 @@ const ServicesSection = () => {
           </h2>
         </div>
         <div className='mb-14'>
-          <ul className='grid grid-cols-3 gap-x-14 gap-y-24 text-left'>
-            <Service services={SERVICES} />
+          <ul className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-14 lg:gap-y-24 gap-y-16  text-left'>
+            <Service />
           </ul>
         </div>
         <div className='text-center'>
