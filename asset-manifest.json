@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.d18512b1.css",
-    "main.js": "/static/js/main.07c6cbfa.js",
+    "main.css": "/static/css/main.f27963ae.css",
+    "main.js": "/static/js/main.4abf7ec1.js",
     "static/media/me-3.jpg": "/static/media/me-3.faf3c3ad4719ddf32809.jpg",
-    "static/media/accointing.png": "/static/media/accointing.8e2b082889806c11d16f.png",
-    "static/media/hangman.png": "/static/media/hangman.4a5e2b770ea780270670.png",
-    "static/media/todo.png": "/static/media/todo.0936691b022e5f869028.png",
+    "static/media/rroshi-store.PNG": "/static/media/rroshi-store.fa94e93b0abe75ab5d99.PNG",
+    "static/media/accointing.png": "/static/media/accointing.bd47c03ea433d9827167.png",
+    "static/media/hangman.png": "/static/media/hangman.abdb79b7576c6406a09f.png",
     "index.html": "/index.html",
     "static/media/search-icon.svg": "/static/media/search-icon.01a1583d3dd42ef54a3a.svg",
-    "main.d18512b1.css.map": "/static/css/main.d18512b1.css.map",
-    "main.07c6cbfa.js.map": "/static/js/main.07c6cbfa.js.map"
+    "main.f27963ae.css.map": "/static/css/main.f27963ae.css.map",
+    "main.4abf7ec1.js.map": "/static/js/main.4abf7ec1.js.map"
   },
   "entrypoints": [
-    "static/css/main.d18512b1.css",
-    "static/js/main.07c6cbfa.js"
+    "static/css/main.f27963ae.css",
+    "static/js/main.4abf7ec1.js"
   ]
 }
