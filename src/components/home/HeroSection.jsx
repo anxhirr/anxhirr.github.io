@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import todo from '../../assets/images/todo.png'
+import rroshistore from '../../assets/images/rroshi-store.PNG'
 import hangman from '../../assets/images/hangman.png'
 import accointing from '../../assets/images/accointing.png'
+import { useEffect } from 'react'
 
 const HeroSection = () => {
   const [toShowImg, setToShowImg] = useState(hangman)
@@ -16,10 +17,26 @@ const HeroSection = () => {
     if (project === 'Accointing') {
       setToShowImg(accointing)
     }
-    if (project === 'To Do') {
-      setToShowImg(todo)
+    if (project === 'Rroshi Store') {
+      setToShowImg(rroshistore)
     }
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (toShowImg === hangman) {
+        setToShowImg(accointing)
+      } else if (toShowImg === accointing) {
+        setToShowImg(rroshistore)
+      } else if (toShowImg === rroshistore) {
+        setToShowImg(hangman)
+      }
+    }, 3000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [toShowImg])
 
   return (
     <section className='hero'>
@@ -33,7 +50,7 @@ const HeroSection = () => {
         <Link className='hero__btn btn text-sm bg-purple'>Make it happen</Link>
 
         <div>
-          <img className='' src={toShowImg} alt='hangman game project' />
+          <img className=' ' src={toShowImg} alt='hangman game project' />
         </div>
 
         <div className=' w-full'>
@@ -45,7 +62,7 @@ const HeroSection = () => {
               <button onClick={handleProjectClick}>Accointing</button>
             </li>
             <li className='border-b-4 border-b-solid border-b-purple'>
-              <button onClick={handleProjectClick}>To Do</button>
+              <button onClick={handleProjectClick}>Rroshi Store</button>
             </li>
             <li className='border-b-4 border-b-solid border-b-purple'>
               <button>See my other Projects</button>
